@@ -1,6 +1,6 @@
 # P0002-Angular-Recipe-Book
 
-| <img src="https://github.com/Estudos-T0117/P0002-Angular-Recipe-Book/assets/104631043/d8eb0698-ec01-418b-9f2b-eb2959b54e8a" alt="Logo" width="250" style="margin-right: 10rem;"> | [P0002-Angular-Recipe-Book](#P0002-Angular-Recipe-Book)<br>[Description](#description)<br>[Getting Started](#getting-started)<br>[Prerequisites](#prerequisites)<br>[Installing P0002-Angular-Recipe-Book](#installing-P0002-Angular-Recipe-Book)<br>[Contributing to P0002-Angular-Recipe-Book](#contributing-to-P0002-Angular-Recipe-Book)<br>[Contact](#contact)<br>[License](#license) 	|
+| <img src="https://github.com/Estudos-T0117/Estudos-T0117-P0002-Angular-Recipe-Book/assets/104631043/5a6db2eb-de57-476a-a05a-88cadf95e9ff" alt="Logo" width="250" style="margin-right: 10rem;"> | [P0002-Angular-Recipe-Book](#P0002-Angular-Recipe-Book)<br>[Description](#description)<br>[Getting Started](#getting-started)<br>[Prerequisites](#prerequisites)<br>[Installing P0002-Angular-Recipe-Book](#installing-P0002-Angular-Recipe-Book)<br>[Contributing to P0002-Angular-Recipe-Book](#contributing-to-P0002-Angular-Recipe-Book)<br>[Contact](#contact)<br>[License](#license) 	|
 |---|---|
 
 ## Description
