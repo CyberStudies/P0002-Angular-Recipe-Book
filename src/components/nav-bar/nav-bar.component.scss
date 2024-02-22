@@ -28,7 +28,12 @@ $box-shadow-size: 2px 4px;
 }
 
 .navbar a {
-  float: left;
+  // Add the flex property with a value of 1
+  // This means each element will take up an equal amount of space
+  flex: 1;
+  // Remove the float property
+  // This is not needed when using flex
+  // float: left;
   display: block;
   color: #ffff; /* default color */
   text-align: center;
