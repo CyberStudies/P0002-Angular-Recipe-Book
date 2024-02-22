@@ -3,21 +3,77 @@
 .navbar {
   overflow: hidden;
   background-color: #0d1117;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
 }
 
 .navbar a {
   float: left;
   display: block;
-  color: #ffff;
+  color: #ffff; /* default color */
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   transition: color 0.3s ease;
+  position: relative; /* add this line */
 }
 
 .navbar a:hover {
-  color: #50fa7b;
+  color: #50fa7b; /* default hover color */
+}
+
+.navbar a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: transparent; /* default pseudo-border color */
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover:after {
+  background-color: #50fa7b; /* default hover pseudo-border color */
+}
+
+.navbar a:nth-child(1):hover {
+  color: #f6d1de; /* pink pastel */
+}
+
+.navbar a:nth-child(1):hover:after {
+  background-color: #f6d1de; /* pink pastel pseudo-border */
+}
+
+.navbar a:nth-child(2):hover {
+  color: #84b6f4; /* blue pastel */
+}
+
+.navbar a:nth-child(2):hover:after {
+  background-color: #84b6f4; /* blue pastel pseudo-border */
+}
+
+.navbar a:nth-child(3):hover {
+  color: #77dd77; /* green pastel */
+}
+
+.navbar a:nth-child(3):hover:after {
+  background-color: #77dd77; /* green pastel pseudo-border */
+}
+
+.navbar a:nth-child(4):hover {
+  color: #fdfd96; /* yellow pastel */
+}
+
+.navbar a:nth-child(4):hover:after {
+  background-color: #fdfd96; /* yellow pastel pseudo-border */
+}
+
+.navbar a:nth-child(5):hover {
+  color: #bc98f3; /* lilac pastel */
+}
+
+.navbar a:nth-child(5):hover:after {
+  background-color: #bc98f3; /* lilac pastel pseudo-border */
 }
 
 .navbar a.active {
@@ -25,7 +81,67 @@
   color: #50fa7b;
 }
 
-.elements{
-  display:flex ;
-  justify-content: space-between
+.elements {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* add the following CSS for the profile section */
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile .name {
+  color: #fff;
+  font-weight: bold;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown .dropbtn {
+  background-color: #0d1117;
+  color: #fff;
+  padding: 14px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown .dropbtn:hover {
+  color: #50fa7b;
+}
+
+.dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #0d1117;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown .dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown .dropdown-content a:hover {
+  background-color: #6272a4;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
