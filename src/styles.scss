@@ -15,6 +15,12 @@ body{
   &-border-all{
     border: 1px solid #30363d !important;
   }
+  &-border-left{
+    border-left: 1px solid #30363d !important;
+  }
+  &-border-right{
+    border-right: 1px solid #30363d !important;
+  }
   &-border-top-bottom{
     border-top: 1px solid #30363d;
     border-bottom: 1px solid #30363d;
