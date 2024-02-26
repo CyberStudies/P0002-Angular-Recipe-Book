@@ -7,6 +7,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { RecipeComponent } from './pages/recipe/recipe.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MostRatedRecipeCardComponent } from './components/recipe-related/most-rated-recipe-card/most-rated-recipe-card.component';
+import { FavouritesComponent } from './pages/favourites/favourites.component';
+import { AddComponent } from './pages/add/add.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { MostRatedRecipeCardComponent } from './components/recipe-related/most-r
     RecipeComponent,
     NavBarComponent,
     MostRatedRecipeCardComponent,
+    FavouritesComponent,
+    AddComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

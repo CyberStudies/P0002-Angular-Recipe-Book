@@ -4,12 +4,38 @@
       <i class="material-icons">menu</i>
     </button>
     <div style="width: 1.5rem; height: 100%"></div>
-    <a routerLink="/home" routerLinkActive="active">&lt;!Home&gt;</a>
-    <a routerLink="/recipes" routerLinkActive="active">&lt;!Recipes&gt;</a>
-    <a routerLink="/favourites" routerLinkActive="active"
+    <a
+      routerLink="/home"
+      routerLinkActive="active"
+      [ngClass]="{
+        'a-is-selected': router.url === '/home'
+      }"
+      >&lt;!Home&gt;</a
+    >
+    <a
+      routerLink="/recipes"
+      routerLinkActive="active"
+      [ngClass]="{
+        'a-is-selected': router.url === '/recipes'
+      }"
+      >&lt;!Recipes&gt;</a
+    >
+    <a
+      routerLink="/favourites"
+      routerLinkActive="active"
+      [ngClass]="{
+        'a-is-selected': router.url === '/favourites'
+      }"
       >&lt;!Favourites&gt;</a
     >
-    <a routerLink="/add" routerLinkActive="active">&lt;!Add&gt;</a>
+    <a
+      routerLink="/add"
+      routerLinkActive="active"
+      [ngClass]="{
+        'a-is-selected': router.url === '/add'
+      }"
+      >&lt;!Add&gt;</a
+    >
     <div style="width: 1.5rem"></div>
     <div class="profile">
       <i class="material-icons">person </i>

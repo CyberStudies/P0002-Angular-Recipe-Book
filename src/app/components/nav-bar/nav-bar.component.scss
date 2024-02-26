@@ -44,6 +44,16 @@ $box-shadow-size: 2px 4px;
 }
 
 
+.a-is-selected {
+  color:#e2e2e26c !important;
+  pointer-events: none; // disable the link click option
+  user-select: none;
+
+  &:hover:after {
+    color:#e2e2e26c;
+  }
+}
+
 .navbar a:after {
   content: "";
   position: absolute;
