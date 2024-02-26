@@ -15,7 +15,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Before you begin, ensure you have met the following requirements:
 
-- You have installed the latest version of `Node.js` and `npm`
+- You have installed the latest version of `Node.js`, `npm` and `Angular CLI`
 
 ### Installing P0002-Angular-Recipe-Book
 
@@ -36,8 +36,15 @@ To install P0002-Angular-Recipe-Book, follow these steps:
 3. Install the dependencies
 
     ```bash
+    npm install -g @angular/cli
     npm install
     ```
+
+4. Run the code
+
+   ```bash
+   ng serve
+   ```
 
 ## Contributing to P0002-Angular-Recipe-Book
 
@@ -87,4 +94,3 @@ Please, if you want to help in a specific project, include the repository name (
 ## License
 
 This project uses the following license: `MIT`.
-#

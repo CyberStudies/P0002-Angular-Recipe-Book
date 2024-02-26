@@ -1,0 +1,40 @@
+.most-rated-recipe-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #282a36;
+  color: #50fa7b;
+  border: 2px solid #50fa7b;
+  border-radius: 15px;
+  margin: 10px;
+  overflow: hidden;
+  width: 95%;
+  height: 70%;
+  position: relative; /* Add this to position recipe-info relative to this */
+}
+
+
+.recipe-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute; /* Add this to position this element absolutely */
+  bottom: 0; /* Add this to position this element at the bottom of the card */
+  background: rgba(0, 0, 0, 0.9); /* Add this to give a semi-transparent background */
+  color: #fff; /* Change text color to white for better visibility */
+}
+
+img {
+  margin-top:-20%;
+  max-width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+.recipe-name, .recipe-likes {
+  padding: 15px;
+}
