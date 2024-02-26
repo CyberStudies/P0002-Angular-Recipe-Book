@@ -9,27 +9,30 @@ export class HomePageComponent implements AfterViewInit {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngAfterViewInit() {
-    const columns = this.el.nativeElement.querySelectorAll('.column');
+    const contentDiv = this.el.nativeElement.querySelector('.content');
 
-    columns.forEach((column: HTMLElement) => {
-      this.renderer.listen(column, 'scroll', () => {
-        this.renderer.addClass(column, 'scrolling');
-      });
-
-      let timer: any = null;
-      this.renderer.listen(column, 'scroll', () => {
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-          this.renderer.removeClass(column, 'scrolling');
-        }, 150);
-      });
+    this.renderer.listen(contentDiv, 'scroll', () => {
+      this.renderer.addClass(contentDiv, 'scrolling');
     });
+
+    let timer: any = null;
+    this.renderer.listen(contentDiv, 'scroll', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        this.renderer.removeClass(contentDiv, 'scrolling');
+      }, 150);
+    });
+
     // Sort the recipes array by likes in descending order
     this.recipes.sort((a, b) => b.likes - a.likes);
 
     // Get the top 5 recipes
     this.recipes = this.recipes.slice(0, 5);
+
+    // Duplicate the recipes array
+    this.recipes = [...this.recipes, ...this.recipes];
   }
+
   recipes = [
     { image: '/assets/Img/food/f1.jpg', name: 'Recipe 1', likes: 100 },
     { image: '/assets/Img/food/f2.jpg', name: 'Recipe 2', likes: 200 },

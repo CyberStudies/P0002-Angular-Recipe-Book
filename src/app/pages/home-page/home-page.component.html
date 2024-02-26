@@ -1,10 +1,14 @@
 <div class="container">
   <div class="column">
     <span>Most Rated</span>
-    <app-most-rated-recipe-card
-      *ngFor="let recipe of recipes"
-      [recipe]="recipe"
-    ></app-most-rated-recipe-card>
+    <div class="content">
+      <div class="cards">
+        <app-most-rated-recipe-card
+          *ngFor="let recipe of recipes"
+          [recipe]="recipe"
+        ></app-most-rated-recipe-card>
+      </div>
+    </div>
   </div>
   <div class="divisor"></div>
   <div class="column">
