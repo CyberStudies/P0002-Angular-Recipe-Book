@@ -59,50 +59,47 @@ $box-shadow-size: 2px 4px;
   background-color: #50fa7b; /* default hover pseudo-border color */
 }
 
-.navbar a:nth-child(1):hover {
-  color: #f6d1de; /* pink pastel */
+.navbar a:nth-child(6):hover {
+  color: #fcacc8; /* pink pastel */
 }
 
-.navbar a:nth-child(1):hover:after {
-  background-color: #f6d1de; /* pink pastel pseudo-border */
-}
-
-.navbar a:nth-child(2):hover {
-  color: #84b6f4; /* blue pastel */
-}
-
-.navbar a:nth-child(2):hover:after {
-  background-color: #84b6f4; /* blue pastel pseudo-border */
+.navbar a:nth-child(6):hover:after {
+  background-color: #fcacc8; /* pink pastel pseudo-border */
 }
 
 .navbar a:nth-child(3):hover {
-  color: #77dd77; /* green pastel */
+  color: #84b6f4; /* blue pastel */
 }
 
 .navbar a:nth-child(3):hover:after {
-  background-color: #77dd77; /* green pastel pseudo-border */
+  background-color: #84b6f4; /* blue pastel pseudo-border */
 }
 
-.navbar a:nth-child(4):hover {
+// .navbar a:nth-child(6):hover {
+//   color: #77dd77; /* green pastel */
+// }
+
+// .navbar a:nth-child(6):hover:after {
+//   background-color: #77dd77; /* green pastel pseudo-border */
+// }
+
+.navbar a:nth-child(5):hover {
   color: #fdfd96; /* yellow pastel */
 }
 
-.navbar a:nth-child(4):hover:after {
+.navbar a:nth-child(5):hover:after {
   background-color: #fdfd96; /* yellow pastel pseudo-border */
 }
 
-.navbar a:nth-child(5):hover {
+.navbar a:nth-child(4):hover {
   color: #bc98f3; /* lilac pastel */
 }
 
-.navbar a:nth-child(5):hover:after {
+.navbar a:nth-child(4):hover:after {
   background-color: #bc98f3; /* lilac pastel pseudo-border */
 }
 
-.navbar a.active {
-  background-color: #6272a4;
-  color: #50fa7b;
-}
+
 
 .elements {
   display: flex;
@@ -152,7 +149,7 @@ $box-shadow-size: 2px 4px;
     // Change the background color to a darker shade
     background-color: $black;
     // Add a inset box shadow
-    @include box-shadow(true, rgba(0, 0, 0, 0.2));
+    @include box-shadow(true, rgba(107, 1, 1, 0.2));
   }
 
   // Define the focus effect
