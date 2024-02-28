@@ -1,0 +1,30 @@
+<div class="last-updated-card">
+  <span class="last-updated-card-title">{{ recipe.name }}</span>
+  <div class="last-updated-card-main-content">
+    <div class="card-box">
+      <div class="ingredients-list">
+        <div>
+          <ul
+            *ngFor="
+              let ingredient of recipe.ingredients
+                | slice : (currentPage - 1) * pageSize : currentPage * pageSize
+            "
+          >
+            <li>{{ ingredient }}</li>
+          </ul>
+        </div>
+        <div class="ingredients-list-page">
+          <div *ngFor="let page of [].constructor(totalPages); let i = index">
+            <button
+              class="ingredients-list-page-btn"
+              [class.selected]="currentPage === i + 1"
+              (click)="currentPage = i + 1"
+            ></button>
+          </div>
+        </div>
+      </div>
+      <img [src]="recipe.image" />
+    </div>
+  </div>
+  <div class="last-updated-card-date">{{ date }}</div>
+</div>

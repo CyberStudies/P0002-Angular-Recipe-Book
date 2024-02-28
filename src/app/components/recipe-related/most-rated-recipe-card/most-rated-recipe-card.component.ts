@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./most-rated-recipe-card.component.scss'],
 })
 export class MostRatedRecipeCardComponent {
-  @Input() recipe: any; // replace with your recipe model
+  @Input() recipe: any;
 }

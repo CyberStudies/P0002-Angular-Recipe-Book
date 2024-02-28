@@ -48,6 +48,9 @@ $box-shadow-size: 2px 4px;
   color:#e2e2e26c !important;
   pointer-events: none; // disable the link click option
   user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 
   &:hover:after {
     color:#e2e2e26c;
