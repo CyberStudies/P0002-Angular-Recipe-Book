@@ -72,6 +72,7 @@ $title-size: 1.5em; // Larger size for emphasis
       text-transform: uppercase; // Capital letters for a modern look
       letter-spacing: 2px; // Spacing between letters for readability
       margin-top:-3rem;
+      margin-left: 1rem;
 
       // Neon effect with animation
       animation: neon-most-rated 4.5s ease-in-out infinite;
@@ -83,6 +84,7 @@ $title-size: 1.5em; // Larger size for emphasis
       text-transform: uppercase; // Capital letters for a modern look
       letter-spacing: 2px; // Spacing between letters for readability
       margin-top:-3rem;
+      margin-left: 1rem;
 
       // Neon effect with animation
       animation: neon-last-updated 4.5s ease-in-out infinite;
@@ -112,4 +114,3 @@ $title-size: 1.5em; // Larger size for emphasis
   background-color: $scrollbar-thumb-scrolling-color;
 
 }
-

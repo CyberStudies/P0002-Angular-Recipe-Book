@@ -50,7 +50,7 @@
 
         .ingredients-list:hover ul li {
           text-overflow: clip;
-          animation: slide 5s linear infinite;
+          animation: slide 10s linear infinite;
         }
 
         @keyframes slide {

@@ -16,6 +16,20 @@ export class LastUpdatedComponent implements OnInit {
   ngOnInit() {
     this.date = this.getFormattedDate(this.recipe.date);
     this.totalPages = Math.ceil(this.recipe.ingredients.length / this.pageSize);
+
+    // Create a new array of ingredients
+    let ingredients = [...this.recipe.ingredients];
+
+    // If the length of ingredients is not divisible by 4
+    if (ingredients.length % 4 !== 0) {
+      // Add empty elements to the ingredients array
+      while (ingredients.length % 4 !== 0) {
+        ingredients.push('');
+      }
+    }
+
+    // Update the recipe ingredients
+    this.recipe.ingredients = ingredients;
   }
 
   getFormattedDate(timestamp: number): string {
