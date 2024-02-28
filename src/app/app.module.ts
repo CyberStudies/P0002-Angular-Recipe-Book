@@ -10,6 +10,7 @@ import { MostRatedRecipeCardComponent } from './components/recipe-related/most-r
 import { FavouritesComponent } from './pages/favourites/favourites.component';
 import { AddComponent } from './pages/add/add.component';
 import { LastUpdatedComponent } from './components/recipe-related/last-updated/last-updated.component';
+import { DropDownComponent } from './components/drop-down/drop-down.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LastUpdatedComponent } from './components/recipe-related/last-updated/l
     FavouritesComponent,
     AddComponent,
     LastUpdatedComponent,
+    DropDownComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

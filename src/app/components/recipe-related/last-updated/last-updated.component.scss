@@ -1,45 +1,57 @@
-  .last-updated-card {
+$primary-color: #50fa7b;
+$secondary-color: #bd93f9;
+$background-color: #222325;
+$text-color: #f8f8f2;
+$shadow-color: rgba(0, 0, 0, 0.3);
+$hover-shadow-color: rgba(0, 0, 0, 1);
+$button-color: #44475a;
 
-    width: min-content;
-    margin:0.5rem;
+@mixin box-shadow($color) {
+  box-shadow: -0.3rem 0 0.8rem 0 $color, 0rem 0 0.8rem 0 $color, 0 0.3rem 0.8rem 0 $color;
+}
 
-    &-title {
-      padding: 0.5rem;
-      font-size: 1.3rem;
-      color: #50fa7b;
-      border-radius: 0px 10px 0px 0;
-    }
+@mixin hover-box-shadow($color) {
+  &:hover {
+    box-shadow: -0.4rem 0 1.5rem 0 $color, 0rem 0 1.5rem 0 $color, 0 0.4rem 1.5rem 0 $color;
+  }
+}
 
-    &-main-content {
-      background-color: #222325;
-      color: #f8f8f2;
-      border-radius: 0 20px 20px 0;
-      transition: all 0.3s ease;
+.last-updated-card {
+  width: min-content;
+  margin: 0.5rem;
+
+  &-title {
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    color: $primary-color;
+    border-radius: 0px 10px 0px 0;
+  }
+
+  &-main-content {
+    background-color: $background-color;
+    color: $text-color;
+    border-radius: 0 20px 20px 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    @include box-shadow($shadow-color);
+    @include hover-box-shadow($hover-shadow-color);
+
+    .card-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 30vh;
       overflow: hidden;
-      box-shadow: -0.3rem 0 0.8rem 0 rgba(0, 0, 0, 0.3), 0rem 0 0.8rem 0 rgba(0, 0, 0, 0.3), 0 0.3rem 0.8rem 0 rgba(0, 0, 0, 0.3);
 
-      &:hover {
-        box-shadow: -0.4rem 0 1.5rem 0 rgba(0, 0, 0, 1), 0rem 0 1.5rem 0 rgba(0, 0, 0, 1), 0 0.4rem 1.5rem 0 rgba(0, 0, 0, 1);
-      }
-
-
-      .card-box {
-        display: flex;
-        justify-content: space-between;
+      .ingredients-list {
+        width: 17vw;
         align-items: center;
-        height: 30vh;
-        overflow: hidden;
 
-
-        .ingredients-list{
-          width: 17vw;
-          align-items: center;
-        }
-        .ingredients-list ul li {
+        ul li {
           height: 100%;
-          border-bottom: 1px solid #44475a;
-          margin-left:3rem;
-          margin-right:3rem;
+          border-bottom: 1px solid $button-color;
+          margin-left: 3rem;
+          margin-right: 3rem;
           max-width: 100%;
           font-size: 0.87rem;
           white-space: nowrap;
@@ -48,7 +60,7 @@
           transition: all 2s;
         }
 
-        .ingredients-list:hover ul li {
+        &:hover ul li {
           text-overflow: clip;
           animation: slide 10s linear infinite;
         }
@@ -59,57 +71,51 @@
           50.0000001% { text-indent: 100%; }
           100% { text-indent: 0%; }
         }
+      }
 
+      img {
+        width: 28vw;
+        height: 100%;
+        object-fit: cover;
 
-
-        img {
-          width: 28vw;
-          height: 100%;
-          object-fit: cover;
-        }
-        img:hover{
+        &:hover {
           transform: (2);
         }
       }
     }
-
-    &-date {
-      font-size: 1em;
-      padding: 0.5em 1em 0;
-      color: #bd93f9;
-      text-align: right;
-    }
   }
 
-  .ingredients-list-page{
-
-    width: 100%;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap; /* Add this line to prevent wrapping */
-    justify-content: center; /* Or 'flex-start' for left alignment, 'flex-end' for right alignment */
-
-    &-btn {
-
-      border: none;
-      height: 10px;
-      width: 8px;
-      border-radius: 100%;
-      color: #f8f8f2;
-      background-color: #44475a;
-      margin: 0 5px;
-      bottom:0;
-
-      &.selected {
-        background-color: #50fa7b;
-      }
-    }
-
-
+  &-date {
+    font-size: 1em;
+    padding: 0.5em 1em 0;
+    color: $secondary-color;
+    text-align: right;
   }
+}
 
-ul{
+.ingredients-list-page {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
 
-  padding: 0px
+  &-btn {
+    border: none;
+    height: 10px;
+    width: 8px;
+    border-radius: 100%;
+    color: $text-color;
+    background-color: $button-color;
+    margin: 0 5px;
+    bottom: 0;
+
+    &.selected {
+      background-color: $primary-color;
+    }
+  }
+}
+
+ul {
+  padding: 0px;
 }

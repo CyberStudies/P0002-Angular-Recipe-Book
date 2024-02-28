@@ -1,0 +1,45 @@
+.search-card {
+  margin: 1.5rem;
+  display: flex;
+  justify-content: center; /* Add this */
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  border-radius: 50px;
+  overflow: hidden;
+  flex-grow: 0.6; /* Adjust this */
+}
+
+.search-button {
+  border: none;
+  background-color: transparent;
+  color: #fff; /* White color for the icon */
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.search-input {
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  flex-grow: 1;
+  font-size: 18px;
+  background-color: transparent;
+  color: #fff; /* White color for the text */
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* Semi-transparent white for the placeholder text */
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+app-drop-down {
+  flex-basis: 30%; /* Add this */
+}
