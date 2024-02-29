@@ -1,7 +1,16 @@
 <div class="search-card">
-  <button class="search-button material-icons">search</button>
+  <button class="search-button">
+    <span class="strange-thing material-icons">search</span>
+  </button>
+
   <div class="search-container">
-    <input placeholder="Ctrl + F" class="search-input" />
+    <input
+      #searchInput
+      placeholder="Ctrl + F"
+      class="search-input"
+      ripple
+      (focus)="addRippleEffect()"
+    />
     <app-drop-down></app-drop-down>
   </div>
 </div>

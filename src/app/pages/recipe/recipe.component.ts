@@ -1,8 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrl: './recipe.component.scss',
+  styleUrls: ['./recipe.component.scss'],
 })
-export class RecipeComponent {}
+export class RecipeComponent {
+  @ViewChild('searchInput') searchInput!: ElementRef;
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.ctrlKey && event.key === 'f') {
+      event.preventDefault();
+      if (this.searchInput && this.searchInput.nativeElement) {
+        this.searchInput.nativeElement.focus();
+      }
+    }
+  }
+  addRippleEffect() {
+    const button = document.querySelector('.strange-thing');
+    if (button) {
+      button.classList.add('ripple');
+      setTimeout(() => {
+        button.classList.remove('ripple');
+      }, 1000);
+    }
+  }
+}
