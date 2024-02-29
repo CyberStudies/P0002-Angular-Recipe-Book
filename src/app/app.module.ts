@@ -11,6 +11,7 @@ import { FavouritesComponent } from './pages/favourites/favourites.component';
 import { AddComponent } from './pages/add/add.component';
 import { LastUpdatedComponent } from './components/recipe-related/last-updated/last-updated.component';
 import { DropDownComponent } from './components/drop-down/drop-down.component';
+import { RecipesTableComponent } from './components/recipe-related/recipes-table/recipes-table.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DropDownComponent } from './components/drop-down/drop-down.component';
     AddComponent,
     LastUpdatedComponent,
     DropDownComponent,
+    RecipesTableComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

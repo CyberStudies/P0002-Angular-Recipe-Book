@@ -35,6 +35,7 @@ export class HomePageComponent implements AfterViewInit {
       ],
       image: '/assets/Img/food/f1.jpg',
       date: 1712645415,
+      likes: 100,
     },
     {
       name: 'Delicious Pasta',
@@ -48,6 +49,7 @@ export class HomePageComponent implements AfterViewInit {
       ],
       image: '/assets/Img/food/f2.jpg',
       date: 1712645416,
+      likes: 200,
     },
     {
       name: 'Tasty Pizza',
@@ -61,6 +63,7 @@ export class HomePageComponent implements AfterViewInit {
       ],
       image: '/assets/Img/food/f3.jpg',
       date: 1712645417,
+      likes: 400,
     },
   ];
 }

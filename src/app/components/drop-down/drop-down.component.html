@@ -1,6 +1,6 @@
-<div class="dropdown">
+<div class="dropdown" (click)="toggleDropdown()">
   <button class="dropbtn">./Food Type</button>
-  <div class="dropdown-content">
+  <div class="dropdown-content" [ngClass]="{ show: dropdownVisible }">
     <div class="card">Coffee</div>
     <div class="card">Lunch</div>
     <div class="card">Dinner</div>

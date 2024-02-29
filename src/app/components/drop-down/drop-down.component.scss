@@ -33,9 +33,9 @@
   display: block;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+// .dropdown:hover .dropdown-content {
+//   display: block;
+// }
 .card {
   // margin: 0.5rem;
   width: 20vw;
@@ -65,7 +65,7 @@
   background-size: cover;
   background-position: center;
   /* Use a pastel brown color for the border and the box shadow */
-  border: 2px solid #a3755c;
+  border: 2px solid #b47757;
   box-shadow: 0 0 10px rgba(163, 117, 92, 0.5);
 }
 
@@ -74,7 +74,7 @@
   background-size: cover;
   background-position: center;
   /* Use a pastel yellow color for the border and the box shadow */
-  border: 2px solid #f9e79f;
+  border: 2px solid #f7eb3c;
   box-shadow: 0 0 10px rgba(249, 231, 159, 0.5);
 }
 
@@ -92,7 +92,7 @@
   background-size: cover;
   background-position: center;
   /* Use a pastel orange color for the border and the box shadow */
-  border: 2px solid #f8c471;
+  border: 2px solid #e79b0c;
   box-shadow: 0 0 10px rgba(248, 196, 113, 0.5);
 }
 
@@ -103,4 +103,14 @@
   /* Use a pastel pink color for the border and the box shadow */
   border: 2px solid #f5b7b1;
   box-shadow: 0 0 10px rgba(245, 183, 177, 0.5);
+}
+
+
+.dropdown-content {
+
+  display: none;
+}
+
+.dropdown-content.show {
+  display: block;
 }
