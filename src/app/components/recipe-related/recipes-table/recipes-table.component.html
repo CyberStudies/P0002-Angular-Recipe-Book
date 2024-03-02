@@ -1,1 +1,6 @@
-<p>recipes-table works!</p>
+<!-- app.component.html -->
+<div class="recipe-list">
+  <div *ngFor="let recipe of allRecipes" class="recipe-item">
+    <h2>{{ recipe.name }}</h2>
+  </div>
+</div>

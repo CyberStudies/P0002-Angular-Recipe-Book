@@ -2,7 +2,7 @@
   <div class="column">
     <span class="most-rated">Most Rated</span>
     <app-most-rated-recipe-card
-      *ngFor="let recipe of recipes"
+      *ngFor="let recipe of sortedRecipes"
       [recipe]="recipe"
     ></app-most-rated-recipe-card>
   </div>
@@ -10,7 +10,7 @@
   <div class="column">
     <span class="last-updated">Last Updated</span>
     <app-last-updated
-      *ngFor="let last of last_updated"
+      *ngFor="let last of allRecipes"
       [recipe]="last"
     ></app-last-updated>
   </div>
