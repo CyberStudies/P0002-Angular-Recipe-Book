@@ -1,0 +1,74 @@
+$main-color: #222325;
+$coffee-color: #b47757;
+$lunch-color: #f7eb3c;
+$dinner-color: #85c1e9;
+$drinks-color: #e79b0c;
+$others-color: #f5b7b1;
+
+.recipe-list {
+  margin: 4rem;
+
+  &-header {
+    display:flex;
+    flex-direction: row;
+    padding: 1%;
+    background-color: $main-color;
+    border-radius: 20px 20px 0 0;
+    font-size: x-large;
+    color: white;
+
+    &-title {
+      /* Add any specific styling for the title if needed */
+    }
+
+    &-type {
+      /* Add any specific styling for the type if needed */
+    }
+  }
+
+  &-item {
+    color: #ffffff;
+    padding: 1%;
+    background-color: $main-color;
+    margin: 2px 0;
+
+    /* Apply different left border colors based on FoodType */
+    &.Coffee {
+      border: 1px solid $coffee-color;
+      border-left: 5px solid $coffee-color;
+    }
+
+    &.Lunch {
+      border: 1px solid $lunch-color;
+      border-left: 5px solid $lunch-color;
+    }
+
+    &.Dinner {
+      border: 1px solid $dinner-color;
+      border-left: 5px solid $dinner-color;
+    }
+
+    &.Drinks {
+      border: 1px solid $drinks-color;
+      border-left: 5px solid $drinks-color;
+    }
+
+    &.Others {
+      border: 1px solid $others-color;
+      border-left: 5px solid $others-color;
+    }
+  }
+
+  &-footer {
+    padding: 1%;
+    background-color: $main-color;
+    border-radius: 0 0 20px 20px;
+    font-size: x-large;
+    color: white;
+
+    &-button{
+      background-color: transparent;
+      color: white;
+    }
+  }
+}

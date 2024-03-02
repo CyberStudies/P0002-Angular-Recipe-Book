@@ -1,6 +1,26 @@
 <!-- app.component.html -->
 <div class="recipe-list">
-  <div *ngFor="let recipe of allRecipes" class="recipe-item">
-    <h2>{{ recipe.name }}</h2>
+  <div class="recipe-list-header default-border-all">
+    <div>&#91;</div>
+    <div class="recipe-list-header-title">&lbrace;Recipe Name&rbrace;</div>
+    <div class="recipe-list-header-type"></div>
+  </div>
+  <div
+    *ngFor="let recipe of allRecipes"
+    class="recipe-list-item {{ mapFoodTypeName(recipe.type) }}"
+  >
+    <div>{{ recipe.name }}</div>
+  </div>
+  <div class="recipe-list-footer default-border-all">
+    <div>
+      <button class="recipe-list-footer-button">
+        <i class="material-icons">arrow_back</i></button
+      ><span class="recipe-list-footer-text"
+        >page {{ currentPage }} of {{ allPages }}</span
+      ><button class="recipe-list-footer-button">
+        <i class="material-icons">arrow_forward</i>
+      </button>
+    </div>
+    &rbrace;&#93;
   </div>
 </div>

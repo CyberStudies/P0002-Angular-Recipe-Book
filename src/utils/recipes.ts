@@ -13,6 +13,7 @@ const recipes: Recipe[] = [
     image: '/assets/Img/food/f1.jpg',
     date: 1712645415,
     likes: 100,
+    type: 1,
   },
   {
     name: 'Delicious Pasta',
@@ -27,6 +28,7 @@ const recipes: Recipe[] = [
     image: '/assets/Img/food/f2.jpg',
     date: 1712645416,
     likes: 200,
+    type: 2,
   },
   {
     name: 'Tasty Pizza',
@@ -41,6 +43,7 @@ const recipes: Recipe[] = [
     image: '/assets/Img/food/f3.jpg',
     date: 1712645417,
     likes: 400,
+    type: 4,
   },
   {
     name: 'Savory Chicken Stir-Fry',
@@ -59,6 +62,26 @@ const recipes: Recipe[] = [
     image: '/assets/Img/food/f4.jpg',
     date: 1712645418,
     likes: 150,
+    type: 0,
+  },
+  {
+    name: 'Banana Drink',
+    ingredients: [
+      '500g boneless chicken breast, sliced',
+      '2 cups broccoli florets',
+      '1 bell pepper, thinly sliced',
+      '3 cloves garlic, minced',
+      '2 tablespoons soy sauce',
+      '1 tablespoon oyster sauce',
+      '1 teaspoon sesame oil',
+      '1 tablespoon vegetable oil',
+      'Salt and pepper to taste',
+      'Cooked rice for serving',
+    ],
+    image: '/assets/Img/food/f4.jpg',
+    date: 1712645418,
+    likes: 150,
+    type: 3,
   },
 ];
 
@@ -68,6 +91,7 @@ interface Recipe {
   image: string;
   date: number;
   likes: number;
+  type: number;
 }
 
 export default recipes;
