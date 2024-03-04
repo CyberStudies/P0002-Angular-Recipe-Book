@@ -1,17 +1,21 @@
 <div class="container">
   <div class="column">
     <span class="most-rated">Most Rated</span>
+    <div class="fog-most-rated"></div>
     <app-most-rated-recipe-card
       *ngFor="let recipe of sortedRecipes"
       [recipe]="recipe"
     ></app-most-rated-recipe-card>
+    <div class="fog-bottom"></div>
   </div>
   <div class="divisor"></div>
   <div class="column">
     <span class="last-updated">Last Updated</span>
+    <div class="fog"></div>
     <app-last-updated
       *ngFor="let last of allRecipes"
       [recipe]="last"
     ></app-last-updated>
+    <div class="fog-bottom"></div>
   </div>
 </div>
