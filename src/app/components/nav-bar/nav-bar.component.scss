@@ -15,13 +15,13 @@ $box-shadow-size: 2px 4px;
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 .navbar {
+  position: sticky;
+  top:0;
   overflow: hidden;
   background-color: $dark-gray;
   align-items: center;
-  font-family: "Fira Code", monospace;
 
   a {
     flex: 1;
