@@ -1,7 +1,7 @@
 // my-component.ts
 import { Component } from '@angular/core';
-import recipes from '../../../../utils/recipes';
-import { FoodType } from '../../../../utils/enums';
+import recipes from '../../utils/recipes';
+import { FoodType } from '../../utils/enums';
 
 @Component({
   selector: 'app-recipes-table',

@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { RecipeComponent } from './pages/recipe/recipe.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { MostRatedRecipeCardComponent } from './components/recipe-related/most-rated-recipe-card/most-rated-recipe-card.component';
+import { MostRatedRecipeCardComponent } from './components/most-rated-recipe-card/most-rated-recipe-card.component';
 import { FavouritesComponent } from './pages/favourites/favourites.component';
 import { AddComponent } from './pages/add/add.component';
-import { LastUpdatedComponent } from './components/recipe-related/last-updated/last-updated.component';
-import { DropDownComponent } from './components/drop-down/drop-down.component';
-import { RecipesTableComponent } from './components/recipe-related/recipes-table/recipes-table.component';
+import { LastUpdatedComponent } from './components/last-updated/last-updated.component';
+import { DropDownComponent } from './utils/drop-down/drop-down.component';
+import { RecipesTableComponent } from './components/recipes-table/recipes-table.component';
 
 @NgModule({
   declarations: [

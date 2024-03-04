@@ -1,7 +1,7 @@
 // most-rated-recipe-card.component.ts
 import { Component, Input } from '@angular/core';
-import recipes from '../../../../utils/recipes';
-import { FoodType } from '../../../../utils/enums';
+import recipes from '../../utils/recipes';
+import { FoodType } from '../../utils/enums';
 import { DecimalPipe } from '@angular/common';
 
 @Component({

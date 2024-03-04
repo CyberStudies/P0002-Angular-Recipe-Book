@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
-import recipes from '../../../utils/recipes';
+import recipes from '../../utils/recipes';
 
 @Component({
   selector: 'app-home-page',
