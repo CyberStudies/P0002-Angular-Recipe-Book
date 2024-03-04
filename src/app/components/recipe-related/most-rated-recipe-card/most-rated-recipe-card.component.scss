@@ -2,6 +2,22 @@ $card-color: #282a36;
 $primary-color: #50fa7b;
 $secondary-color: #fff;
 $background-color: rgba(0, 0, 0, 0.9);
+$coffee-color: #b47757;
+$lunch-color: #f7eb3c;
+$dinner-color: #85c1e9;
+$drinks-color: #e79b0c;
+$others-color: #f5b7b1;
+
+@mixin recipe-card-styles($border-color, $box-shadow) {
+  border-color: $border-color;
+  box-shadow: 0 0 10px $box-shadow;
+  transition: border-color 0.5s, box-shadow 0.5s;
+
+  &:hover {
+    border-color: darken($border-color, 20%);
+    box-shadow: 0 0 10px darken($box-shadow, 20%);
+  }
+}
 
 .most-rated-recipe-card {
   display: flex;
@@ -16,6 +32,26 @@ $background-color: rgba(0, 0, 0, 0.9);
   width: 95%;
   height: 70%;
   position: relative;
+
+  &.Coffee {
+    @include recipe-card-styles($coffee-color, $coffee-color);
+  }
+
+  &.Lunch {
+    @include recipe-card-styles($lunch-color, $lunch-color);
+  }
+
+  &.Dinner {
+    @include recipe-card-styles($dinner-color, $dinner-color);
+  }
+
+  &.Drinks {
+    @include recipe-card-styles($drinks-color, $drinks-color);
+  }
+
+  &.Others {
+    @include recipe-card-styles($others-color, $others-color);
+  }
 }
 
 .recipe-info {
@@ -32,13 +68,14 @@ img {
   margin-top: -20%;
   max-width: 100%;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 
   &:hover {
     transform: scale(1.1);
   }
 }
 
-.recipe-name, .recipe-likes {
+.recipe-name,
+.recipe-likes {
   padding: 15px;
 }

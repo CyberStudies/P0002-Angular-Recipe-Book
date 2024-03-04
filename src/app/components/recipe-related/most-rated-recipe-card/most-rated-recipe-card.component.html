@@ -1,7 +1,7 @@
-<div class="most-rated-recipe-card">
+<div class="most-rated-recipe-card {{ mapFoodTypeName(recipe.type) }}">
   <img [src]="recipe.image" alt="Recipe image" />
   <div class="recipe-info">
     <span class="recipe-name">{{ recipe.name }}</span>
-    <span class="recipe-likes">{{ recipe.likes }} likes</span>
+    <span class="recipe-likes">{{ formatLikes(recipe.likes) }} likes</span>
   </div>
 </div>

@@ -1,28 +1,25 @@
-$main-color: #222325;
+$main-color: #0C0C0C;
+$secondary-color: #252525;
 $coffee-color: #b47757;
 $lunch-color: #f7eb3c;
 $dinner-color: #85c1e9;
 $drinks-color: #e79b0c;
 $others-color: #f5b7b1;
 
+
 .recipe-list {
   margin: 4rem;
 
-  &-header {
-    display:flex;
-    flex-direction: row;
-    padding: 1%;
+
+  &-header, &-footer {
     background-color: $main-color;
+    color: white;
+    padding: 1%;
     border-radius: 20px 20px 0 0;
     font-size: x-large;
-    color: white;
 
-    &-title {
-      /* Add any specific styling for the title if needed */
-    }
-
-    &-type {
-      /* Add any specific styling for the type if needed */
+    &-title{
+      display: flex;
     }
   }
 
@@ -30,45 +27,65 @@ $others-color: #f5b7b1;
     color: #ffffff;
     padding: 1%;
     background-color: $main-color;
-    margin: 2px 0;
+    // margin: 4px 0;
+    border-left: 5px solid;
+    border-color: transparent;
+    transition: border-color 0.3s ease-in-out;
 
-    /* Apply different left border colors based on FoodType */
+    &:hover {
+      color: orange;
+      background-color: $secondary-color;
+    }
+
     &.Coffee {
-      border: 1px solid $coffee-color;
-      border-left: 5px solid $coffee-color;
+      border-color: $coffee-color;
+
+      &:hover {
+        border-color: darken($coffee-color, 20%);
+      }
     }
 
     &.Lunch {
-      border: 1px solid $lunch-color;
-      border-left: 5px solid $lunch-color;
+      border-color: $lunch-color;
+
+      &:hover {
+        border-color: darken($lunch-color, 20%);
+      }
     }
 
     &.Dinner {
-      border: 1px solid $dinner-color;
-      border-left: 5px solid $dinner-color;
+      border-color: $dinner-color;
+
+      &:hover {
+        border-color: darken($dinner-color, 20%);
+      }
     }
 
     &.Drinks {
-      border: 1px solid $drinks-color;
-      border-left: 5px solid $drinks-color;
+      border-color: $drinks-color;
+
+      &:hover {
+        border-color: darken($drinks-color, 20%);
+      }
     }
 
     &.Others {
-      border: 1px solid $others-color;
-      border-left: 5px solid $others-color;
+      border-color: $others-color;
+
+      &:hover {
+        border-color: darken($others-color, 20%);
+      }
     }
   }
 
   &-footer {
-    padding: 1%;
-    background-color: $main-color;
     border-radius: 0 0 20px 20px;
-    font-size: x-large;
-    color: white;
 
     &-button{
       background-color: transparent;
       color: white;
+      appearance: none;
+      border: none;
     }
   }
 }

@@ -11,13 +11,14 @@ export class HomePageComponent implements AfterViewInit {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngAfterViewInit() {
-    // Sort the recipes array by likes in descending order
-    this.sortedRecipes = this.allRecipes;
+    // Create a copy of the recipes array
+    this.sortedRecipes = [...this.allRecipes];
 
+    // Sort the copied array by likes in descending order
     this.sortedRecipes.sort((a, b) => b.likes - a.likes);
 
     // Get the top 5 recipes
-    this.sortedRecipes = this.allRecipes.slice(0, 5);
+    this.sortedRecipes = this.sortedRecipes.slice(0, 5);
   }
 
   allRecipes: Recipe[] = recipes;

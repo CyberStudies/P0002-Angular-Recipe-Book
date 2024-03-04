@@ -1,13 +1,15 @@
 <!-- app.component.html -->
 <div class="recipe-list">
   <div class="recipe-list-header default-border-all">
-    <div>&#91;</div>
-    <div class="recipe-list-header-title">&lbrace;Recipe Name&rbrace;</div>
+    <div class="recipe-list-header-title">
+      <div>&#91;</div>
+      &lbrace;Recipe Name&rbrace;
+    </div>
     <div class="recipe-list-header-type"></div>
   </div>
   <div
     *ngFor="let recipe of allRecipes"
-    class="recipe-list-item {{ mapFoodTypeName(recipe.type) }}"
+    class="recipe-list-item {{ mapFoodTypeName(recipe.type) }}  "
   >
     <div>{{ recipe.name }}</div>
   </div>
@@ -20,7 +22,7 @@
       ><button class="recipe-list-footer-button">
         <i class="material-icons">arrow_forward</i>
       </button>
+      &rbrace;&#93;
     </div>
-    &rbrace;&#93;
   </div>
 </div>
