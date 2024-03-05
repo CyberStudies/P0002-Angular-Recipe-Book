@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import recipes from '../../utils/recipes';
 import { Router } from '@angular/router';
 

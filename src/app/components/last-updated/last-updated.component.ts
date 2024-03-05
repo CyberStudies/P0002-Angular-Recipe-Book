@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-last-updated',
@@ -7,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LastUpdatedComponent implements OnInit {
   @Input() recipe: any;
+  constructor(private router: Router) {}
 
   date: string = 'no data found';
   currentPage = 1;
@@ -35,5 +37,8 @@ export class LastUpdatedComponent implements OnInit {
   getFormattedDate(timestamp: number): string {
     const date = new Date(timestamp * 1000); // Convert to milliseconds
     return `${date.getMonth() + 1}·${date.getDate()}·${date.getFullYear()}`;
+  }
+  goTo(id: Number) {
+    this.router.navigate(['/selected-recipe', id]);
   }
 }
