@@ -12,6 +12,7 @@ import { AddComponent } from './pages/add/add.component';
 import { LastUpdatedComponent } from './components/last-updated/last-updated.component';
 import { DropDownComponent } from './utils/drop-down/drop-down.component';
 import { RecipesTableComponent } from './components/recipes-table/recipes-table.component';
+import { SelectedRecipeComponent } from './pages/selected-recipe/selected-recipe.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RecipesTableComponent } from './components/recipes-table/recipes-table.
     LastUpdatedComponent,
     DropDownComponent,
     RecipesTableComponent,
+    SelectedRecipeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

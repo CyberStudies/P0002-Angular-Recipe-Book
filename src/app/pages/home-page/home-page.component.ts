@@ -1,5 +1,6 @@
 import { Component, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import recipes from '../../utils/recipes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +9,7 @@ import recipes from '../../utils/recipes';
 })
 export class HomePageComponent implements AfterViewInit {
   sortedRecipes: Recipe[] = [];
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private router: Router) {}
 
   ngAfterViewInit() {
     // Create a copy of the recipes array
@@ -22,9 +23,13 @@ export class HomePageComponent implements AfterViewInit {
   }
 
   allRecipes: Recipe[] = recipes;
+  goTo(id: Number) {
+    this.router.navigate(['/selected-recipe', id]);
+  }
 }
 
 interface Recipe {
+  id: Number;
   name: string;
   ingredients: string[];
   image: string;

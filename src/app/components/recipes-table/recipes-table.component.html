@@ -9,6 +9,7 @@
   </div>
   <div
     *ngFor="let recipe of currentRecipes"
+    (click)="goTo(recipe.id)"
     class="recipe-list-item {{ mapFoodTypeName(recipe.type) }}"
   >
     <div>{{ recipe.name }}</div>

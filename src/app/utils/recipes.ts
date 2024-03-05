@@ -1,5 +1,6 @@
 const recipes: Recipe[] = [
   {
+    id: 1,
     name: 'Cheesy Risoli',
     ingredients: [
       '1 cup arborio rice',
@@ -18,6 +19,7 @@ const recipes: Recipe[] = [
     type: 2,
   },
   {
+    id: 2,
     name: 'Delicious Pasta',
     ingredients: [
       '200 grams of pasta',
@@ -33,6 +35,7 @@ const recipes: Recipe[] = [
     type: 2,
   },
   {
+    id: 3,
     name: 'Tasty Pizza',
     ingredients: [
       '1 pizza dough',
@@ -48,6 +51,7 @@ const recipes: Recipe[] = [
     type: 1,
   },
   {
+    id: 4,
     name: 'Banana Drink',
     ingredients: [
       '500g boneless chicken breast, sliced',
@@ -67,6 +71,7 @@ const recipes: Recipe[] = [
     type: 3,
   },
   {
+    id: 5,
     name: 'Savory Chicken Stir-Fry',
     ingredients: [
       '500g boneless chicken breast, sliced',
@@ -86,6 +91,7 @@ const recipes: Recipe[] = [
     type: 0,
   },
   {
+    id: 6,
     name: 'Vegetarian Quinoa Salad',
     ingredients: [
       '1 cup quinoa, cooked',
@@ -103,6 +109,7 @@ const recipes: Recipe[] = [
     type: 2,
   },
   {
+    id: 7,
     name: 'Sushi Rolls',
     ingredients: [
       '2 cups sushi rice, cooked',
@@ -119,6 +126,7 @@ const recipes: Recipe[] = [
     type: 2,
   },
   {
+    id: 8,
     name: 'Mango Tango Smoothie',
     ingredients: [
       '1 ripe mango, peeled and diced',
@@ -133,6 +141,7 @@ const recipes: Recipe[] = [
     type: 3,
   },
   {
+    id: 9,
     name: 'Spinach and Feta Stuffed Chicken Breast',
     ingredients: [
       '4 boneless, skinless chicken breasts',
@@ -149,6 +158,7 @@ const recipes: Recipe[] = [
     type: 0,
   },
   {
+    id: 10,
     name: 'Chocolate Avocado Mousse',
     ingredients: [
       '2 ripe avocados',
@@ -164,6 +174,7 @@ const recipes: Recipe[] = [
     type: 4,
   },
   {
+    id: 11,
     name: 'Caprese Salad Skewers',
     ingredients: [
       'Cherry tomatoes',
@@ -178,6 +189,7 @@ const recipes: Recipe[] = [
     type: 2,
   },
   {
+    id: 12,
     name: 'Mushroom Risotto',
     ingredients: [
       '1 cup Arborio rice',
@@ -196,6 +208,7 @@ const recipes: Recipe[] = [
     type: 2,
   },
   {
+    id: 13,
     name: 'Grilled Salmon with Lemon-Dill Sauce',
     ingredients: [
       '4 salmon fillets',
@@ -211,6 +224,7 @@ const recipes: Recipe[] = [
     type: 1,
   },
   {
+    id: 14,
     name: 'Vegetable Stir-Fry with Tofu',
     ingredients: [
       '1 block firm tofu, cubed',
@@ -228,6 +242,7 @@ const recipes: Recipe[] = [
     type: 0,
   },
   {
+    id: 15,
     name: 'Pesto Chicken Penne Pasta',
     ingredients: [
       '2 cups penne pasta, cooked',
@@ -245,6 +260,7 @@ const recipes: Recipe[] = [
     type: 2,
   },
   {
+    id: 16,
     name: 'Ginger Garlic Shrimp Stir-Fry',
     ingredients: [
       '1 lb shrimp, peeled and deveined',
@@ -264,6 +280,7 @@ const recipes: Recipe[] = [
     type: 1,
   },
   {
+    id: 17,
     name: 'Mixed Berry Smoothie Bowl',
     ingredients: [
       '1 cup mixed berries (strawberries, blueberries, raspberries)',
@@ -279,6 +296,7 @@ const recipes: Recipe[] = [
     type: 3,
   },
   {
+    id: 18,
     name: 'Perfect Espresso',
     ingredients: [
       '2 shots of espresso',
@@ -293,6 +311,7 @@ const recipes: Recipe[] = [
     type: 0,
   },
   {
+    id: 19,
     name: 'Iced Caramel Macchiato',
     ingredients: [
       '2 shots of espresso',
@@ -307,6 +326,7 @@ const recipes: Recipe[] = [
     type: 0,
   },
   {
+    id: 20,
     name: 'Iced Caramel Macchiato',
     ingredients: [
       '2 shots of espresso',
@@ -321,6 +341,7 @@ const recipes: Recipe[] = [
     type: 0,
   },
   {
+    id: 21,
     name: 'Iced Caramel Macchiato',
     ingredients: [
       '2 shots of espresso',
@@ -337,6 +358,7 @@ const recipes: Recipe[] = [
 ];
 
 interface Recipe {
+  id: Number;
   name: string;
   ingredients: string[];
   image: string;

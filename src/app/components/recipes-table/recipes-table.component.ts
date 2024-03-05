@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import recipes from '../../utils/recipes';
 import { FoodType } from '../../utils/enums';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes-table',
@@ -9,7 +10,7 @@ import { FoodType } from '../../utils/enums';
   styleUrls: ['./recipes-table.component.scss'],
 })
 export class RecipesTableComponent {
-  constructor() {}
+  constructor(private router: Router) {}
   allRecipes: Recipe[] = recipes;
   currentPage: number = 1;
   itemsPerPage: number = 20;
@@ -50,9 +51,13 @@ export class RecipesTableComponent {
         return 'Unknown';
     }
   }
+  goTo(id: Number) {
+    this.router.navigate(['/selected-recipe', id]);
+  }
 }
 
 interface Recipe {
+  id: Number;
   name: string;
   ingredients: string[];
   image: string;
