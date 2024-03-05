@@ -9,9 +9,30 @@ import { FoodType } from '../../utils/enums';
   styleUrls: ['./recipes-table.component.scss'],
 })
 export class RecipesTableComponent {
+  constructor() {}
   allRecipes: Recipe[] = recipes;
   currentPage: number = 1;
-  allPages: number = Math.ceil(recipes.length / 20);
+  itemsPerPage: number = 20;
+
+  get currentRecipes(): Recipe[] {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    return this.allRecipes.slice(start, end);
+  }
+
+  allPages: number = Math.ceil(this.allRecipes.length / this.itemsPerPage);
+
+  nextPage(): void {
+    if (this.currentPage < this.allPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
 
   mapFoodTypeName(type: FoodType): string {
     switch (type) {
