@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import recipes from '../../utils/recipes';
 import { Router } from '@angular/router';
 
@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements AfterViewInit {
+export class HomePageComponent implements OnInit {
   sortedRecipes: Recipe[] = [];
   constructor(private router: Router) {}
 
-  ngAfterViewInit() {
+  ngOnInit() {
     // Create a copy of the recipes array
     this.sortedRecipes = [...this.allRecipes];
 
