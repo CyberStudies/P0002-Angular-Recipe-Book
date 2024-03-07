@@ -10,9 +10,11 @@ import { MostRatedRecipeCardComponent } from './components/most-rated-recipe-car
 import { FavouritesComponent } from './pages/favourites/favourites.component';
 import { AddComponent } from './pages/add/add.component';
 import { LastUpdatedComponent } from './components/last-updated/last-updated.component';
-import { DropDownComponent } from './utils/drop-down/drop-down.component';
+import { DropDownComponent } from '../utils/drop-down/drop-down.component';
 import { RecipesTableComponent } from './components/recipes-table/recipes-table.component';
 import { SelectedRecipeComponent } from './pages/selected-recipe/selected-recipe.component';
+
+import { FormatLikesPipe } from '../utils/pipes/format-likes.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { SelectedRecipeComponent } from './pages/selected-recipe/selected-recipe
     DropDownComponent,
     RecipesTableComponent,
     SelectedRecipeComponent,
+    FormatLikesPipe,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

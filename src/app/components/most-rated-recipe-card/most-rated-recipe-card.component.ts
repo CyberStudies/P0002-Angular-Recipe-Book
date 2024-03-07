@@ -1,48 +1,43 @@
 // most-rated-recipe-card.component.ts
 import { Component, Input } from '@angular/core';
-import recipes from '../../utils/recipes';
-import { FoodType } from '../../utils/enums';
-import { DecimalPipe } from '@angular/common';
+import recipes from '@/utils/recipes';
+import { FoodType } from '@/utils/enums';
+import { Recipe } from '@/models/recipe.model';
 
 @Component({
   selector: 'app-most-rated-recipe-card',
   templateUrl: './most-rated-recipe-card.component.html',
   styleUrls: ['./most-rated-recipe-card.component.scss'],
-  providers: [DecimalPipe],
 })
 export class MostRatedRecipeCardComponent {
-  @Input() recipe: any;
+  private _recipe: Recipe | undefined;
+
+  @Input()
+  set recipe(value: Recipe) {
+    this._recipe = value;
+  }
+
+  get recipe(): Recipe {
+    if (!this._recipe) {
+      return {
+        id: 0,
+        name: '',
+        ingredients: [],
+        image: '',
+        date: 0,
+        likes: 0,
+        type: FoodType.Others,
+      };
+    }
+    return this._recipe;
+  }
   allRecipes: Recipe[] = recipes;
 
-  constructor(private decimalPipe: DecimalPipe) {}
-
-  mapFoodTypeName(type: FoodType): string {
-    switch (type) {
-      case FoodType.Coffee:
-        return 'Coffee';
-      case FoodType.Lunch:
-        return 'Lunch';
-      case FoodType.Dinner:
-        return 'Dinner';
-      case FoodType.Drinks:
-        return 'Drinks';
-      case FoodType.Others:
-        return 'Others';
-      default:
-        return 'Unknown';
-    }
-  }
-  formatLikes(likes: number): string {
-    const formattedLikes = this.decimalPipe.transform(likes, '1.0-0');
-    return formattedLikes !== null ? formattedLikes.replace(/,/g, '.') : '';
-  }
-}
-
-interface Recipe {
-  name: string;
-  ingredients: string[];
-  image: string;
-  date: number;
-  likes: number;
-  type: FoodType;
+  foodTypeNames = {
+    [FoodType.Coffee]: 'Coffee',
+    [FoodType.Lunch]: 'Lunch',
+    [FoodType.Dinner]: 'Dinner',
+    [FoodType.Drinks]: 'Drinks',
+    [FoodType.Others]: 'Others',
+  };
 }

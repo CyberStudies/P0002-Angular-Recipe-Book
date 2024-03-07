@@ -1,8 +1,8 @@
 // my-component.ts
 import { Component } from '@angular/core';
-import recipes from '../../utils/recipes';
-import { FoodType } from '../../utils/enums';
-import { Router } from '@angular/router';
+import recipes from '../../../utils/recipes';
+import { FoodType } from '../../../utils/enums';
+import { NavigationService } from '@/services/navigation.service';
 
 @Component({
   selector: 'app-recipes-table',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./recipes-table.component.scss'],
 })
 export class RecipesTableComponent {
-  constructor(private router: Router) {}
+  constructor(private navigationService: NavigationService) {}
   allRecipes: Recipe[] = recipes;
   currentPage: number = 1;
   itemsPerPage: number = 20;
@@ -51,13 +51,13 @@ export class RecipesTableComponent {
         return 'Unknown';
     }
   }
-  goTo(id: Number) {
-    this.router.navigate(['/selected-recipe', id]);
+  goto(id: number) {
+    this.navigationService.goto(id);
   }
 }
 
 interface Recipe {
-  id: Number;
+  id: number;
   name: string;
   ingredients: string[];
   image: string;

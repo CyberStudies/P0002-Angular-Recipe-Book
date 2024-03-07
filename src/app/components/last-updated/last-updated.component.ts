@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationService } from '@/services/navigation.service';
 
 @Component({
   selector: 'app-last-updated',
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LastUpdatedComponent implements OnInit {
   @Input() recipe: any;
-  constructor(private router: Router) {}
+  constructor(private navigationService: NavigationService) {}
 
   date: string = 'no data found';
   currentPage = 1;
@@ -38,7 +38,7 @@ export class LastUpdatedComponent implements OnInit {
     const date = new Date(timestamp * 1000); // Convert to milliseconds
     return `${date.getMonth() + 1}·${date.getDate()}·${date.getFullYear()}`;
   }
-  goTo(id: Number) {
-    this.router.navigate(['/selected-recipe', id]);
+  goto(id: number) {
+    this.navigationService.goto(id);
   }
 }

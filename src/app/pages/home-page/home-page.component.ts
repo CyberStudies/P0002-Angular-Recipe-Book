@@ -1,15 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import recipes from '../../utils/recipes';
-import { Router } from '@angular/router';
-
-interface Recipe {
-  id: number;
-  name: string;
-  ingredients: string[];
-  image: string;
-  date: number;
-  likes: number;
-}
+import recipes from '../../../utils/recipes';
+import { Recipe } from '@/models/recipe.model';
+import { NavigationService } from '@/services/navigation.service';
 
 @Component({
   selector: 'app-home-page',
@@ -19,12 +11,9 @@ interface Recipe {
 })
 export class HomePageComponent implements OnInit {
   sortedRecipes: Recipe[] = [];
-  allRecipes: Recipe[] = recipes.map((recipe) => ({
-    ...recipe,
-    id: Number(recipe.id),
-  }));
+  allRecipes: Recipe[] = recipes; // Directly assign recipes data to allRecipes
 
-  constructor(private router: Router) {}
+  constructor(private navigationService: NavigationService) {}
 
   ngOnInit() {
     this.sortedRecipes = [...this.allRecipes];
@@ -33,7 +22,7 @@ export class HomePageComponent implements OnInit {
   }
 
   goto(id: number) {
-    this.router.navigate(['/selected-recipe', id]);
+    this.navigationService.goto(id);
   }
 
   trackByRecipeId(index: number, recipe: Recipe): number {

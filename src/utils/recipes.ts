@@ -358,7 +358,7 @@ const recipes: Recipe[] = [
 ];
 
 interface Recipe {
-  id: Number;
+  id: number;
   name: string;
   ingredients: string[];
   image: string;
