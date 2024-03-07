@@ -6,6 +6,8 @@ $green: #50fa7b;
 $font-size: 1.2rem;
 $padding: 0.5rem 1rem;
 $box-shadow-size: 2px 4px;
+$transition-duration: 0.3s;
+$after-height: 4px;
 
 @mixin box-shadow($inset: false, $color: rgba(0, 0, 0, 0.1)) {
   @if $inset {
@@ -14,7 +16,6 @@ $box-shadow-size: 2px 4px;
     box-shadow: 0 $box-shadow-size $color;
   }
 }
-
 
 .navbar {
   position: sticky;
@@ -30,7 +31,7 @@ $box-shadow-size: 2px 4px;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color $transition-duration ease;
     position: relative;
 
     &:after {
@@ -39,99 +40,87 @@ $box-shadow-size: 2px 4px;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: $after-height;
       background-color: transparent;
-      transition: background-color 0.3s ease;
+      transition: background-color $transition-duration ease;
     }
 
     &:hover:after {
       background-color: $green;
     }
-  }
 
-  a:nth-child(6):hover {
-    color: #fcacc8;
-    &:after {
-      background-color: #fcacc8;
+    &:nth-child(6):hover {
+      color: #fcacc8;
+      &:after {
+        background-color: #fcacc8;
+      }
+    }
+
+    &:nth-child(3):hover {
+      color: #84b6f4;
+      &:after {
+        background-color: #84b6f4;
+      }
+    }
+
+    &:nth-child(5):hover {
+      color: #fdfd96;
+      &:after {
+        background-color: #fdfd96;
+      }
+    }
+
+    &:nth-child(4):hover {
+      color: #bc98f3;
+      &:after {
+        background-color: #bc98f3;
+      }
     }
   }
 
-  a:nth-child(3):hover {
-    color: #84b6f4;
-    &:after {
-      background-color: #84b6f4;
-    }
-  }
-
-  a:nth-child(5):hover {
-    color: #fdfd96;
-    &:after {
-      background-color: #fdfd96;
-    }
-  }
-
-  a:nth-child(4):hover {
-    color: #bc98f3;
-    &:after {
-      background-color: #bc98f3;
-    }
-  }
-}
-
-.a-is-selected {
-  color: #e2e2e26c !important;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-
-  &:hover:after {
+  .a-is-selected {
     color: #e2e2e26c;
-  }
-}
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 
-.elements {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.profile {
-  display: flex;
-  width: 2.5rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
-  border-radius: 50%;
-  align-items: center;
-  margin-right: 1.5rem;
-  justify-content: center;
-  background-color: #333;
-}
-
-.menu-button {
-  margin-left: 1rem;
-  border-radius: 50%;
-
-  font-size: 0rem;
-  color: $white;
-  appearance: none;
-  border: none;
-  padding: 0.25rem;
-  background-color: $dark-gray;
-  @include box-shadow();
-  cursor: pointer;
-
-  &:hover {
-    background-color: $light-gray;
+    &:hover:after {
+      color: #e2e2e26c;
+    }
   }
 
-  &:active {
-    background-color: $black;
-    @include box-shadow(true, rgba(107, 1, 1, 0.2));
+  .elements {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  &:focus {
-    outline: 2px solid $green;
+
+  .menu-button {
+    margin-left: 1rem;
+    border-radius: 50%;
+    font-size: 0rem;
+    color: $white;
+    appearance: none;
+    border: none;
+    padding: 0.25rem;
+    background-color: $dark-gray;
+    @include box-shadow();
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-gray;
+    }
+
+    &:active {
+      background-color: $black;
+      @include box-shadow(true, rgba(107, 1, 1, 0.2));
+    }
+
+    &:focus {
+      outline: 2px solid $green;
+    }
   }
 }

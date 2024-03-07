@@ -3,42 +3,11 @@
     <button class="menu-button">
       <i class="material-icons">menu</i>
     </button>
-    <div style="width: 1.5rem; height: 100%"></div>
-    <a
-      routerLink="/home"
-      routerLinkActive="active"
-      [ngClass]="{
-        'a-is-selected': router.url === '/home'
-      }"
-      >&lt;!Home&gt;</a
-    >
-    <a
-      routerLink="/recipes"
-      routerLinkActive="active"
-      [ngClass]="{
-        'a-is-selected': router.url === '/recipes'
-      }"
-      >&lt;!Recipes&gt;</a
-    >
-    <a
-      routerLink="/favourites"
-      routerLinkActive="active"
-      [ngClass]="{
-        'a-is-selected': router.url === '/favourites'
-      }"
-      >&lt;!Favourites&gt;</a
-    >
-    <a
-      routerLink="/add"
-      routerLinkActive="active"
-      [ngClass]="{
-        'a-is-selected': router.url === '/add'
-      }"
-      >&lt;!Add&gt;</a
-    >
-    <div style="width: 1.5rem"></div>
-    <div class="profile">
-      <img style="z-index: 10" src="favicon.png" />
-    </div>
+    <div class="spacer"></div>
+    <ng-container *ngFor="let link of links">
+      <a [routerLink]="link.path" routerLinkActive="a-is-selected"
+        >&lt;!{{ link.label }}&gt;</a
+      >
+    </ng-container>
   </div>
 </nav>

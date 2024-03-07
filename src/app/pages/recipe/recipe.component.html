@@ -1,17 +1,19 @@
-<div class="search-card">
-  <button class="search-button">
-    <span class="strange-thing material-icons">search</span>
-  </button>
+<div style="height: 90vh; overflow-y: scroll">
+  <div class="search-card">
+    <button class="search-button">
+      <span class="strange-thing material-icons">search</span>
+    </button>
 
-  <div class="search-container">
-    <input
-      #searchInput
-      placeholder="Ctrl + F"
-      class="search-input"
-      ripple
-      (focus)="addRippleEffect()"
-    />
-    <app-drop-down></app-drop-down>
+    <div class="search-container">
+      <input
+        #searchInput
+        placeholder="Ctrl + F"
+        class="search-input"
+        ripple
+        (focus)="addRippleEffect()"
+      />
+      <app-drop-down></app-drop-down>
+    </div>
   </div>
+  <app-recipes-table></app-recipes-table>
 </div>
-<app-recipes-table></app-recipes-table>

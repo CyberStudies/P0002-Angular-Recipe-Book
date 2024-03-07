@@ -1,8 +1,9 @@
 // my-component.ts
 import { Component } from '@angular/core';
 import recipes from '../../../utils/recipes';
-import { FoodType } from '../../../utils/enums';
+import { FoodType } from '@/utils/enums';
 import { NavigationService } from '@/services/navigation.service';
+import { FoodFilterService } from '@/services/food-filter.service';
 
 @Component({
   selector: 'app-recipes-table',
@@ -10,15 +11,29 @@ import { NavigationService } from '@/services/navigation.service';
   styleUrls: ['./recipes-table.component.scss'],
 })
 export class RecipesTableComponent {
-  constructor(private navigationService: NavigationService) {}
+  selectedFoodType: FoodType | null = null;
+  constructor(
+    private navigationService: NavigationService,
+    private foodFilterService: FoodFilterService
+  ) {
+    this.foodFilterService.currentFoodType.subscribe(
+      (foodType) => (this.selectedFoodType = foodType)
+    );
+  }
   allRecipes: Recipe[] = recipes;
   currentPage: number = 1;
   itemsPerPage: number = 20;
 
   get currentRecipes(): Recipe[] {
+    let filteredRecipes = this.allRecipes;
+    if (this.selectedFoodType !== null) {
+      filteredRecipes = this.allRecipes.filter(
+        (recipe) => recipe.type === this.selectedFoodType
+      );
+    }
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.allRecipes.slice(start, end);
+    return filteredRecipes.slice(start, end);
   }
 
   allPages: number = Math.ceil(this.allRecipes.length / this.itemsPerPage);
