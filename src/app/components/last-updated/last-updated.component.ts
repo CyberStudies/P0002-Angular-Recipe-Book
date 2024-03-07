@@ -1,5 +1,9 @@
+// last-updated.component.ts
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationService } from '@/services/navigation.service';
+import { DateService } from '@/services/date.service';
+import { PaginationService } from '@/services/pagination.service';
+import { RecipeSummary } from '@/models/recipe-summary.model';
 
 @Component({
   selector: 'app-last-updated',
@@ -7,37 +11,31 @@ import { NavigationService } from '@/services/navigation.service';
   styleUrls: ['./last-updated.component.scss'],
 })
 export class LastUpdatedComponent implements OnInit {
-  @Input() recipe: any;
-  constructor(private navigationService: NavigationService) {}
-
+  @Input() recipe: RecipeSummary;
   date: string = 'no data found';
   currentPage = 1;
   pageSize = 4;
   totalPages: number = 1;
+  paginatedIngredients: string[];
+
+  constructor(
+    private navigationService: NavigationService,
+    private dateService: DateService,
+    private paginationService: PaginationService
+  ) {
+    this.paginatedIngredients = [];
+    this.recipe = { id: 0, name: '', image: '', date: 0, ingredients: [] };
+  }
 
   ngOnInit() {
-    this.date = this.getFormattedDate(this.recipe.date);
+    this.date = this.dateService.getFormattedDate(this.recipe.date);
     this.totalPages = Math.ceil(this.recipe.ingredients.length / this.pageSize);
-
-    // Create a new array of ingredients
-    let ingredients = [...this.recipe.ingredients];
-
-    // If the length of ingredients is not divisible by 4
-    if (ingredients.length % 4 !== 0) {
-      // Add empty elements to the ingredients array
-      while (ingredients.length % 4 !== 0) {
-        ingredients.push('');
-      }
-    }
-
-    // Update the recipe ingredients
-    this.recipe.ingredients = ingredients;
+    this.paginatedIngredients = this.paginationService.getPaginatedItems(
+      this.recipe.ingredients,
+      this.pageSize
+    );
   }
 
-  getFormattedDate(timestamp: number): string {
-    const date = new Date(timestamp * 1000); // Convert to milliseconds
-    return `${date.getMonth() + 1}·${date.getDate()}·${date.getFullYear()}`;
-  }
   goto(id: number) {
     this.navigationService.goto(id);
   }
