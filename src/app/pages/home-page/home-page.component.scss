@@ -24,7 +24,6 @@ $title-size: 1.5em;
     text-shadow: 0 0 6px $most-rated-title-color, 0 0 12px $most-rated-title-color, 0 0 18px $most-rated-title-color, 0 0 24px $most-rated-title-color;
   }
 }
-
 .container {
   display: flex;
   height: 89vh;
@@ -47,28 +46,23 @@ $title-size: 1.5em;
       margin-right: 0px;
     }
 
-    .most-rated {
-      color: $most-rated-title-color;
+    .most-rated, .last-updated {
+      color: $most-rated-title-color; // Adjusted to use the variable
       font-size: $title-size;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-top: -3rem;
       margin-left: 1rem;
-      animation: neon-most-rated 4.5s ease-in-out infinite;
-      position: absolute;
-      z-index: 10 !important;
-    }
-
-    .last-updated {
-      color: $last-updated-title-color;
-      font-size: $title-size;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-top: -3rem;
-      margin-left: 1rem;
-      animation: neon-last-updated 4.5s ease-in-out infinite;
       position: absolute;
       z-index: 10;
+
+      &.most-rated {
+        animation: neon-most-rated 4.5s ease-in-out infinite;
+      }
+
+      &.last-updated {
+        animation: neon-last-updated 4.5s ease-in-out infinite;
+      }
     }
   }
 }
@@ -95,41 +89,26 @@ $title-size: 1.5em;
   background-color: $scrollbar-thumb-scrolling-color;
 }
 
-
-.fog{
+.fog, .fog-most-rated, .fog-bottom {
   width: 102%;
   height: 10%;
   position: sticky;
-  top: -10px;
   margin-left: -10px !important;
   margin-right: -20px !important;
-  background: linear-gradient(to bottom, #0d1117, transparent);
-  margin: 0;
 }
 
-.fog-most-rated{
-  border-right: none;
-  margin-right: 0px;
-  width: 103%;
-  height: 10%;
-  position: sticky;
+.fog {
   top: -10px;
-  margin-left: -10px !important;
-  margin-right: -20px !important;
   background: linear-gradient(to bottom, #0d1117, transparent);
-  margin: 0;
-  z-index: 9!important;
 }
 
-.fog-bottom{
-  width: 102%;
-  height: 10%;
-  position: sticky;
+.fog-most-rated {
+  top: -10px;
+  background: linear-gradient(to bottom, #0d1117, transparent);
+  z-index: 9;
+}
+
+.fog-bottom {
   bottom: -10px;
-  margin-left: -10px !important;
-  margin-right: -20px !important;
   background: linear-gradient(to top, #0d1117,  transparent);
-  margin: 0;
 }
-
-

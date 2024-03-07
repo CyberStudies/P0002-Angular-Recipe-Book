@@ -2,11 +2,11 @@
   <div class="column">
     <span class="most-rated">Most Rated</span>
     <div class="fog-most-rated"></div>
-    <div style="margin-top: -3rem !important"></div>
+    <div style="margin-top: -2.5rem !important"></div>
     <app-most-rated-recipe-card
-      *ngFor="let recipe of sortedRecipes"
+      *ngFor="let recipe of sortedRecipes; trackBy: trackByRecipeId"
       [recipe]="recipe"
-      (click)="goTo(recipe.id)"
+      (click)="goto(recipe.id)"
     ></app-most-rated-recipe-card>
     <div class="fog-bottom"></div>
   </div>
@@ -14,7 +14,7 @@
   <div class="column">
     <span class="last-updated">Last Updated</span>
     <div class="fog"></div>
-    <div style="margin-top: -3rem !important"></div>
+    <div style="margin-top: -2.5rem !important"></div>
     <app-last-updated
       *ngFor="let last of allRecipes"
       [recipe]="last"
