@@ -1,3 +1,4 @@
+// Variables
 $white: #ffff;
 $black: #000000;
 $dark-gray: #010409;
@@ -9,6 +10,7 @@ $box-shadow-size: 2px 4px;
 $transition-duration: 0.3s;
 $after-height: 4px;
 
+// Mixins
 @mixin box-shadow($inset: false, $color: rgba(0, 0, 0, 0.1)) {
   @if $inset {
     box-shadow: inset 0 $box-shadow-size $color;
@@ -17,12 +19,54 @@ $after-height: 4px;
   }
 }
 
+// Navbar
 .navbar {
   position: sticky;
-  top:0;
+  top: 0;
   overflow: hidden;
   background-color: $dark-gray;
   align-items: center;
+
+  .a-is-selected {
+    color: #e2e2e26c;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  .elements {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-button {
+    margin-left: 1rem;
+    border-radius: 50%;
+    font-size: 0rem;
+    color: $white;
+    appearance: none;
+    border: none;
+    padding: 0.25rem;
+    background-color: $dark-gray;
+    @include box-shadow();
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-gray;
+    }
+
+    &:active {
+      background-color: $black;
+      @include box-shadow(true, rgba(107, 1, 1, 0.2));
+    }
+
+    &:focus {
+      outline: 2px solid $green;
+    }
+  }
 
   a {
     flex: 1;
@@ -77,50 +121,163 @@ $after-height: 4px;
       }
     }
   }
+}
 
-  .a-is-selected {
-    color: #e2e2e26c;
-    pointer-events: none;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+// Search Card
+.search-card {
+  display: flex;
+  justify-content: center;
+}
 
-    &:hover:after {
-      color: #e2e2e26c;
-    }
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50px 0 0 50px;
+  overflow: hidden;
+  flex-grow: 0.6;
+}
+
+.search-button {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 50%;
+  margin-right: -3rem;
+  padding: 10px;
+  width: 3rem;
+  height: 3rem;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.search-input {
+  border: none;
+  padding: 10px;
+  margin-left: 3rem;
+  flex-grow: 1;
+  font-size: 18px;
+  background-color: transparent;
+  color: #fff;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
   }
 
-  .elements {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  &:focus {
+    outline: none;
   }
+}
 
+.strange-thing {
+  margin-top: 2px;
+}
 
-  .menu-button {
-    margin-left: 1rem;
-    border-radius: 50%;
-    font-size: 0rem;
-    color: $white;
-    appearance: none;
+.ripple {
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+
+// Dropdown
+.dropdown {
+  display: flex;
+  justify-content: center;
+
+  .dropbtn {
+    background: #26292f;
     border: none;
-    padding: 0.25rem;
-    background-color: $dark-gray;
-    @include box-shadow();
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+    font-size: 18px;
     cursor: pointer;
+    box-shadow: -1px 0px 20px -1px rgba(17, 17, 17, 0.75);
+  }
 
-    &:hover {
-      background-color: $light-gray;
-    }
+  .dropdown-content {
+    margin-top: 2.8rem;
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.2);
+    position: fixed; // Use fixed positioning to make it independent of the parent stacking context
+    z-index: 100000;
 
-    &:active {
-      background-color: $black;
-      @include box-shadow(true, rgba(107, 1, 1, 0.2));
+    .card {
+      color: black;
+      padding: 16px;
+      text-decoration: none;
+      display: block;
     }
+  }
 
-    &:focus {
-      outline: 2px solid $green;
-    }
+  .dropdown-content.show {
+    display: block;
+  }
+}
+
+// Cards
+.card {
+  width: 20vw;
+  height: 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.7s ease-in-out;
+
+  &:hover {
+    font-size: larger;
+    transform-origin: bottom;
+    transform: scale(1.1);
+    height: 15vh;
+  }
+
+  &:nth-child(1) {
+    background-image: url("/assets/Img/cards/coffee.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #b47757;
+    box-shadow: 0 0 10px rgba(163, 117, 92, 0.5);
+  }
+
+  &:nth-child(2) {
+    background-image: url("/assets/Img/cards/lunch.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #f7eb3c;
+    box-shadow: 0 0 10px rgba(249, 231, 159, 0.5);
+  }
+
+  &:nth-child(3) {
+    background-image: url("/assets/Img/cards/dinner2.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #85c1e9;
+    box-shadow: 0 0 10px rgba(133, 193, 233, 0.5);
+  }
+
+  &:nth-child(4) {
+    background-image: url("/assets/Img/cards/drinks.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #e79b0c;
+    box-shadow: 0 0 10px rgba(248, 196, 113, 0.5);
+  }
+
+  &:nth-child(5) {
+    background-image: url("/assets/Img/cards/outros.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #f5b7b1;
+    box-shadow: 0 0 10px rgba(245, 183, 177, 0.5);
   }
 }

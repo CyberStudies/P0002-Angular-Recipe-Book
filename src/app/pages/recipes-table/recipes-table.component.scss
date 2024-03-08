@@ -5,10 +5,14 @@ $lunch-color: #f7eb3c;
 $dinner-color: #85c1e9;
 $drinks-color: #e79b0c;
 $others-color: #f5b7b1;
-
+$scrollbar-width: 8px;
+$scrollbar-thumb-color: rgba(136, 136, 136, 0.1);
+$scrollbar-thumb-hover-color: #555;
+$scrollbar-thumb-border-radius: 20px;
+$scrollbar-thumb-scrolling-color: #888;
 
 .recipe-list {
-  margin: 4rem;
+  margin: 1rem;
 
 
   &-header, &-footer {
@@ -89,4 +93,26 @@ $others-color: #f5b7b1;
       border: none;
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: $scrollbar-width;
+
+  &-track {
+    background: transparent;
+  }
+
+  &-thumb {
+    background-color: $scrollbar-thumb-color;
+    border-radius: $scrollbar-thumb-border-radius;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background: $scrollbar-thumb-hover-color;
+    }
+  }
+}
+
+.column.scrolling::-webkit-scrollbar-thumb {
+  background-color: $scrollbar-thumb-scrolling-color;
 }

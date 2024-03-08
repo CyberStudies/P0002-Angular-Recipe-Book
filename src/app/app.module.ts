@@ -4,14 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { RecipeComponent } from './pages/recipe/recipe.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MostRatedRecipeCardComponent } from './components/most-rated-recipe-card/most-rated-recipe-card.component';
 import { FavouritesComponent } from './pages/favourites/favourites.component';
 import { AddComponent } from './pages/add/add.component';
 import { LastUpdatedComponent } from './components/last-updated/last-updated.component';
 import { DropDownComponent } from '../utils/drop-down/drop-down.component';
-import { RecipesTableComponent } from './components/recipes-table/recipes-table.component';
+import { RecipesTableComponent } from './pages/recipes-table/recipes-table.component';
 import { SelectedRecipeComponent } from './pages/selected-recipe/selected-recipe.component';
 
 import { FormatLikesPipe } from '../utils/pipes/format-likes.pipe';
@@ -20,7 +19,6 @@ import { FormatLikesPipe } from '../utils/pipes/format-likes.pipe';
   declarations: [
     AppComponent,
     HomePageComponent,
-    RecipeComponent,
     NavBarComponent,
     MostRatedRecipeCardComponent,
     FavouritesComponent,
