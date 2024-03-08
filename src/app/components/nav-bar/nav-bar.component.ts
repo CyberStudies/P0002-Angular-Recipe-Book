@@ -18,10 +18,10 @@ import { FoodFilterService } from '@/services/food-filter.service';
 export class NavBarComponent implements AfterViewInit {
   @ViewChild('searchInput') searchInput!: ElementRef;
   links = [
-    { path: '/home', label: 'Home' },
-    { path: '/recipes', label: 'Recipes' },
-    { path: '/favourites', label: 'Favourites' },
-    { path: '/add', label: 'Add' },
+    { path: '/home', label: 'home' },
+    { path: '/recipes', label: 'menu_book' },
+    { path: '/favourites', label: 'star' },
+    { path: '/add', label: 'add' },
   ];
 
   dropdownVisible = false;
@@ -35,8 +35,6 @@ export class NavBarComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     throw new Error('Method not implemented.');
   }
-
-
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {

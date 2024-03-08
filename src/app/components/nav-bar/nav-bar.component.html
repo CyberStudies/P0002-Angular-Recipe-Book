@@ -5,8 +5,14 @@
     </button>
     <div class="spacer"></div>
     <ng-container *ngFor="let link of links">
-      <a [routerLink]="link.path" routerLinkActive="a-is-selected"
+      <!-- <a [routerLink]="link.path" routerLinkActive="a-is-selected"
         >&lt;!{{ link.label }}&gt;</a
+      > -->
+      <a
+        [routerLink]="link.path"
+        routerLinkActive="a-is-selected"
+        class="material-icons"
+        >{{ link.label }}</a
       >
     </ng-container>
     <div class="search-card">
