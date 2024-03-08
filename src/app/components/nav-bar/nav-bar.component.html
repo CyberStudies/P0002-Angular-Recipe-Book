@@ -24,26 +24,7 @@
           (input)="searchService.updateSearchTerm(searchInput.value)"
         />
 
-        <div class="dropdown" (click)="toggleDropdown()">
-          <button class="dropbtn">./Food Type</button>
-          <div class="dropdown-content" [ngClass]="{ show: dropdownVisible }">
-            <div class="card" (click)="selectFoodType(FoodType.Coffee)">
-              Coffee
-            </div>
-            <div class="card" (click)="selectFoodType(FoodType.Lunch)">
-              Lunch
-            </div>
-            <div class="card" (click)="selectFoodType(FoodType.Dinner)">
-              Dinner
-            </div>
-            <div class="card" (click)="selectFoodType(FoodType.Drinks)">
-              Drinks
-            </div>
-            <div class="card" (click)="selectFoodType(FoodType.Others)">
-              Others
-            </div>
-          </div>
-        </div>
+        <app-drop-down></app-drop-down>
       </div>
     </div>
   </div>

@@ -32,10 +32,11 @@ export class NavBarComponent implements AfterViewInit {
     public searchService: SearchService,
     private foodFilterService: FoodFilterService
   ) {}
-
-  ngAfterViewInit() {
-    this.addClickOutsideListener();
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
   }
+
+
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
@@ -71,26 +72,5 @@ export class NavBarComponent implements AfterViewInit {
 
   selectFoodType(type: FoodType): void {
     this.foodFilterService.changeFoodType(type);
-  }
-
-  addClickOutsideListener() {
-    document.addEventListener('click', (event) => {
-      if (!this.isClickInsideDropdown(event)) {
-        this.dropdownVisible = false;
-      }
-    });
-  }
-
-  isClickInsideDropdown(event: Event): boolean {
-    const dropdownButton = document.querySelector('.dropbtn');
-    const dropdownContent = document.querySelector('.dropdown-content');
-
-    return (
-      (dropdownButton &&
-        dropdownContent &&
-        (dropdownButton.contains(event.target as Node) ||
-          dropdownContent.contains(event.target as Node))) ||
-      false
-    );
   }
 }
