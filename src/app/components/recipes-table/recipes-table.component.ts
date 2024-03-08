@@ -4,6 +4,7 @@ import recipes from '../../../utils/recipes';
 import { FoodType } from '@/utils/enums';
 import { NavigationService } from '@/services/navigation.service';
 import { FoodFilterService } from '@/services/food-filter.service';
+import { SearchService } from '@/services/search.service';
 
 @Component({
   selector: 'app-recipes-table',
@@ -11,15 +12,22 @@ import { FoodFilterService } from '@/services/food-filter.service';
   styleUrls: ['./recipes-table.component.scss'],
 })
 export class RecipesTableComponent {
+  searchTerm: string = '';
   selectedFoodType: FoodType | null = null;
   constructor(
     private navigationService: NavigationService,
-    private foodFilterService: FoodFilterService
+    private foodFilterService: FoodFilterService,
+    private searchService: SearchService
   ) {
     this.foodFilterService.currentFoodType.subscribe(
       (foodType) => (this.selectedFoodType = foodType)
     );
+    this.searchService.currentSearchTerm.subscribe((term) => {
+      console.log('Received new search term:', term);
+      this.searchTerm = term;
+    });
   }
+
   allRecipes: Recipe[] = recipes;
   currentPage: number = 1;
   itemsPerPage: number = 20;
@@ -27,8 +35,13 @@ export class RecipesTableComponent {
   get currentRecipes(): Recipe[] {
     let filteredRecipes = this.allRecipes;
     if (this.selectedFoodType !== null) {
-      filteredRecipes = this.allRecipes.filter(
+      filteredRecipes = filteredRecipes.filter(
         (recipe) => recipe.type === this.selectedFoodType
+      );
+    }
+    if (this.searchTerm !== '') {
+      filteredRecipes = filteredRecipes.filter((recipe) =>
+        recipe.name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
     const start = (this.currentPage - 1) * this.itemsPerPage;
@@ -36,7 +49,20 @@ export class RecipesTableComponent {
     return filteredRecipes.slice(start, end);
   }
 
-  allPages: number = Math.ceil(this.allRecipes.length / this.itemsPerPage);
+  get allPages(): number {
+    let filteredRecipes = this.allRecipes;
+    if (this.selectedFoodType !== null) {
+      filteredRecipes = filteredRecipes.filter(
+        (recipe) => recipe.type === this.selectedFoodType
+      );
+    }
+    if (this.searchTerm !== '') {
+      filteredRecipes = filteredRecipes.filter((recipe) =>
+        recipe.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+    return Math.ceil(filteredRecipes.length / this.itemsPerPage);
+  }
 
   nextPage(): void {
     if (this.currentPage < this.allPages) {

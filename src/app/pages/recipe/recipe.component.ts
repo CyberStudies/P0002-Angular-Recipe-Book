@@ -1,3 +1,4 @@
+import { SearchService } from '@/services/search.service';
 import { Component, ElementRef, ViewChild, HostListener } from '@angular/core';
 
 @Component({
@@ -7,6 +8,7 @@ import { Component, ElementRef, ViewChild, HostListener } from '@angular/core';
 })
 export class RecipeComponent {
   @ViewChild('searchInput') searchInput!: ElementRef;
+  constructor(public searchService: SearchService) {}
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {

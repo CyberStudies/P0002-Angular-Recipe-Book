@@ -11,7 +11,9 @@
         class="search-input"
         ripple
         (focus)="addRippleEffect()"
+        (input)="searchService.updateSearchTerm(searchInput.value)"
       />
+
       <app-drop-down></app-drop-down>
     </div>
   </div>

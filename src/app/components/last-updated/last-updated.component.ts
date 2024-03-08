@@ -26,9 +26,19 @@ export class LastUpdatedComponent implements OnInit {
     this.paginatedIngredients = [];
     this.recipe = { id: 0, name: '', image: '', date: 0, ingredients: [] };
   }
+  checkAndPadIngredients() {
+    let remainder = this.recipe.ingredients.length % 4;
+    if (remainder !== 0) {
+      let itemsToAdd = 4 - remainder;
+      for (let i = 0; i < itemsToAdd; i++) {
+        this.recipe.ingredients.push('');
+      }
+    }
+  }
 
   ngOnInit() {
     this.date = this.dateService.getFormattedDate(this.recipe.date);
+    this.checkAndPadIngredients();
     this.totalPages = Math.ceil(this.recipe.ingredients.length / this.pageSize);
     this.paginatedIngredients = this.paginationService.getPaginatedItems(
       this.recipe.ingredients,
