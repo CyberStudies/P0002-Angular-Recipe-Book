@@ -32,11 +32,7 @@ export class NavBarComponent implements AfterViewInit {
     public searchService: SearchService,
     private foodFilterService: FoodFilterService
   ) {}
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
-
+  ngAfterViewInit(): void {}
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
