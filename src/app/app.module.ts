@@ -14,6 +14,7 @@ import { RecipesTableComponent } from './pages/recipes-table/recipes-table.compo
 import { SelectedRecipeComponent } from './pages/selected-recipe/selected-recipe.component';
 
 import { FormatLikesPipe } from '../utils/pipes/format-likes.pipe';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { FormatLikesPipe } from '../utils/pipes/format-likes.pipe';
     FormatLikesPipe,
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
