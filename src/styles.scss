@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
+@import './app/themes/light-theme.scss';
+@import './app/themes/dark-theme.scss';
+@import './app/themes/anime/anime-theme-dark.scss';
+@import './app/themes/anime/anime-theme-light.scss';
+
+
 *{
   font-family: "Fira Code", monospace;
 }

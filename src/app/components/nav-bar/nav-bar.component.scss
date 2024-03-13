@@ -1,3 +1,4 @@
+@import '../../themes/dark-theme.scss';
 // Variables
 $white: #ffff;
 $black: #000000;
@@ -20,7 +21,7 @@ $after-height: 4px;
   position: sticky;
   top: 0;
   overflow: hidden;
-  background-color: $dark-gray;
+  background-color: $background;
   align-items: center;
 
   .a-is-selected {

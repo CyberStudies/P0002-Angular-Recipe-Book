@@ -31,7 +31,13 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.png", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss",
+              "src/app/themes/light-theme.scss",
+              "src/app/themes/dark-theme.scss",
+              "src/app/themes/anime/anime-theme-dark.scss",
+              "src/app/themes/anime/anime-theme-light.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -87,8 +93,8 @@
               "src/styles.scss",
               "src/themes/light-theme.scss",
               "src/themes/dark-theme.scss",
-              "src/themes/anime-theme-dark.scss",
-              "src/themes/anime-theme-light.scss"
+              "src/themes/anime/anime-theme-dark.scss",
+              "src/themes/anime/anime-theme-light.scss"
             ],
             "scripts": []
           }
