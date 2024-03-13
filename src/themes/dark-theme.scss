@@ -1,8 +1,6 @@
-@import '~@angular/material/theming';
-
-$primary: mat-palette($mat-grey);
-$accent:  mat-palette($mat-blue, A200, A100, A400);
-
-$theme: mat-dark-theme($primary, $accent);
-
-@include angular-material-theme($theme);
+:root {
+  --background-color: #000;
+  --text-color: #fff;
+  // Add more variables as needed
+}
+ 

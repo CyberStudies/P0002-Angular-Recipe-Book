@@ -1,4 +1,9 @@
 <main>
+  <button (click)="setTheme('light-theme')">Light Theme</button>
+  <button (click)="setTheme('dark-theme')">Dark Theme</button>
+  <button (click)="setTheme('anime-theme-dark')">Anime Dark Theme</button>
+  <button (click)="setTheme('anime-theme-light')">Anime Light Theme</button>
+
   <app-nav-bar></app-nav-bar>
   <router-outlet></router-outlet>
 </main>
