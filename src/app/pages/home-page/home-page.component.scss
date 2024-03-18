@@ -113,3 +113,23 @@ $title-size: 1.5em;
   bottom: -10px;
   background: linear-gradient(to top, #0d1117,  transparent);
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+
+    .divisor {
+      display: none;
+    }
+
+    .column {
+      &:first-child {
+        display: block;
+      }
+
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+}
