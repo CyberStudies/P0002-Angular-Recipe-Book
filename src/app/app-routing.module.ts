@@ -9,10 +9,10 @@ import { RecipesTableComponent } from './pages/recipes-table/recipes-table.compo
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
-  { path: 'recipes', component: RecipesTableComponent },
+  { path: 'explore', component: RecipesTableComponent },
   { path: 'favourites', component: FavouritesComponent },
   { path: 'add', component: AddComponent },
-  { path: 'selected-recipe/:id', component: SelectedRecipeComponent },
+  { path: 'recipe/:id', component: SelectedRecipeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // redirect to `home` route by default
 ];
 

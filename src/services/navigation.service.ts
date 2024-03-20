@@ -9,6 +9,6 @@ export class NavigationService {
   constructor(private router: Router) {}
 
   goto(id: number) {
-    this.router.navigate(['/selected-recipe', id]);
+    this.router.navigate(['/recipe', id]);
   }
 }

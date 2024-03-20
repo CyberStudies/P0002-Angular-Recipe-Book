@@ -19,7 +19,7 @@ export class NavBarComponent implements AfterViewInit {
   @ViewChild('searchInput') searchInput!: ElementRef;
   links = [
     { path: '/home', label: 'Home' },
-    { path: '/recipes', label: 'Recipes' },
+    { path: '/explore', label: 'Recipes' },
     { path: '/favourites', label: 'Favourites' },
     { path: '/add', label: 'Add' },
   ];

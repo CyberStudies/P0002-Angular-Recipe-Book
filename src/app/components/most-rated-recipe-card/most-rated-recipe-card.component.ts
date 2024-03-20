@@ -23,6 +23,7 @@ export class MostRatedRecipeCardComponent {
         id: 0,
         name: '',
         ingredients: [],
+        instructions: [],
         image: '',
         date: 0,
         likes: 0,

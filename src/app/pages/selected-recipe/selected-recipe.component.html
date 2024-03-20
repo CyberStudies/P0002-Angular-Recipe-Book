@@ -1,18 +1,29 @@
-<div class="container">
-  <div class="recipe-title">Recipe name</div>
-  <div class="card">
-    <div class="card-itens">
-      <span class="card-itens-title">Itens</span>
-      <ul>
-        <li>itens</li>
-      </ul>
+<div class="card">
+  <div class="itens-card">
+    <span class="card-itens-title">Itens</span>
+    <ul>
+      <ng-container *ngFor="let ingredient of recipe?.ingredients">
+        <li style="padding-bottom: 10px" *ngIf="ingredient">
+          {{ ingredient }}
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <div class="card-instructions">
+    <span class="card-instructions-title">Instructions</span>
+    <div>
+      <div
+        class="card-instructions-list card-instructions-text"
+        *ngFor="let instruction of recipe?.instructions; let i = index"
+      >
+        <div class="card-instructions-ennumeration">{{ i + 1 }}</div>
+        <div class="card-instructions-text">{{ instruction }}</div>
+      </div>
     </div>
-    <div class="card-instructions">
-      <span class="card-instructions-title">Instructions</span>
-    </div>
-    <div class="card-general-info">
-      <img src="../../../assets/Img/food/f15.jpg " />
-      <div>finge q tem algo</div>
-    </div>
+  </div>
+
+  <div class="info-card">
+    <img :src="{{ recipe?.image }}" />
   </div>
 </div>
