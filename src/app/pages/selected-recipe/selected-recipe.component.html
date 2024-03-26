@@ -14,7 +14,7 @@
     <span class="card-instructions-title">Instructions</span>
     <div>
       <div
-        class="card-instructions-list card-instructions-text"
+        class="card-instructions-list"
         *ngFor="let instruction of recipe?.instructions; let i = index"
       >
         <div class="card-instructions-ennumeration">{{ i + 1 }}</div>
@@ -23,7 +23,23 @@
     </div>
   </div>
 
-  <div class="info-card">
+  <div class="img-card">
     <img :src="{{ recipe?.image }}" />
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-head">
+      <div class="info-card-head-profile">
+        <img src="../../../assets/Img/Logo.jpg" />
+        <div class="info-card-head-profile-name">nome #id</div>
+        <div class="info-card-head-profile-level">11</div>
+      </div>
+      <div class="info-card-head-profile-badges"></div>
+    </div>
+    <div class="info-card-content"></div>
+    <div class="info-card-footer">
+      <div class="info-card-footer-reference"></div>
+      <div class="info-card-footer-icons"></div>
+    </div>
   </div>
 </div>

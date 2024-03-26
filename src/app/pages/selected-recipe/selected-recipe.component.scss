@@ -1,12 +1,23 @@
+$scrollbar-width: 8px;
+$scrollbar-thumb-color: rgba(136, 136, 136, 0.1);
+$scrollbar-thumb-hover-color: #555;
+$scrollbar-thumb-border-radius: 20px;
+$scrollbar-thumb-scrolling-color: #888;
+
+
+
+
 .itens-card{
-  position: sticky;
+  position: fixed;
   background-color: black;
   border-right: 1px solid white;
   padding: 10px;
   width: 25%;
+  height: 100% ;
   align-items: center;
+  font-weight: bold;
   &-title{
-    font-weight: bold;
+    font-weight: bolder;
   }
 }
 
@@ -16,8 +27,9 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  overflow:auto;
 
-  height: 100%;
+  height: 93vh;
 
   border-radius: 20px;
 
@@ -30,39 +42,132 @@
     border-radius: 20px;
     padding: 1rem;
     width: 43%;
+    padding-left: 28%;
+    padding-right: 28%;
     margin-right:1%;
     margin-left: 1%;
+
 
     &-title{
       font-weight: bold;
       align-self: center;
+      font-size: x-large;
     }
     &-ennumeration{
-      margin-right: 10px;
+      margin-right: 5px;
+      padding: 5px;
     }
     &-text{
       border-left: 2px solid cyan;
       padding-left: 10px;
+      padding: 5px;
     }
     &-list{
       line-height: 20px;
       display: flex;
       align-items: center;
       margin-top: 1rem;
+      font-size: larger;
+      text-align: justify;
+      background-color: rgba(0, 0, 0, 0.480);
+      border-radius: 10px;
     }
   }
 
 }
 
-.info-card{
-  position: sticky;
-  margin-top: 0;
-  margin-right: 0;
-  width: 30%;
+
+::-webkit-scrollbar {
+  width: $scrollbar-width;
+  height: 90%;
+
+  &-track {
+    background: transparent;
+  }
+
+  &-thumb {
+    background-color: $scrollbar-thumb-color;
+    border-radius: $scrollbar-thumb-border-radius;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background: $scrollbar-thumb-hover-color;
+    }
+  }
+}
+
+.column.scrolling::-webkit-scrollbar-thumb {
+  background-color: $scrollbar-thumb-scrolling-color;
+}
+
+.img-card{
+  z-index: -1000;
+  position: fixed;
+  top:-50px;
+  margin-left: 25%;
+
   display: flex;
   justify-content: center;
   align-items: center;
   img{
-    width: 100% ;
+    opacity: 0.15;
+    width: 100%;
+  }
+
+}
+
+.info-card{
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  margin:1rem;
+  padding:1rem;
+  right:0 ;
+  height: 80%;
+  width: 23%;
+  background-color: rgba(0, 0, 0, 0.480);
+  border-radius: 25px;
+
+  &-head{
+    width: 100%;
+    height: 25%;
+    background-color: rgba(0, 0, 0, 0.480);
+
+    &-profile{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+
+
+
+      img{
+        width: 25%;
+        border-radius: 50%;
+        margin-right:10px;
+        border:1px solid white;
+      }
+
+      &-name{
+        color: white;
+      }
+    }
+  }
+
+  &-content{
+
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    margin-top:5px
+  }
+
+  &-footer{
+
+    width: 100%;
+    height: 25%;
+    border: 1px solid black;
+    margin-top:5px
   }
 }
