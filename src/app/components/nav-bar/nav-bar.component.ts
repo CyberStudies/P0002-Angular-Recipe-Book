@@ -38,8 +38,8 @@ export class NavBarComponent implements AfterViewInit {
   handleKeyDown(event: KeyboardEvent) {
     if (event.ctrlKey && event.key === 'f') {
       event.preventDefault();
-      if (this.router.url !== '/recipes') {
-        this.router.navigate(['/recipes']).then(() => {
+      if (this.router.url !== '/explore') {
+        this.router.navigate(['/explore']).then(() => {
           if (this.searchInput && this.searchInput.nativeElement) {
             this.searchInput.nativeElement.focus();
           }
