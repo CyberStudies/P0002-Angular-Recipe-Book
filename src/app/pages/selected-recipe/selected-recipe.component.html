@@ -31,14 +31,20 @@
     <div class="info-card-head">
       <div class="info-card-head-profile">
         <img src="../../../assets/Img/Logo.jpg" />
-        <div class="info-card-head-profile-main">
-          <div class="info-card-head-profile-name">nome #id</div>
-          <div class="info-card-head-profile-level">11</div>
+        <div style="width: 100%">
+          <div class="info-card-head-profile-main">
+            <div class="info-card-head-profile-name">nome #id</div>
+            <div class="info-card-head-profile-level">11</div>
+          </div>
+          <div class="info-card-head-profile-badges">teste</div>
         </div>
       </div>
-      <div class="info-card-head-profile-badges">teste</div>
     </div>
-    <div class="info-card-content"></div>
+    <div class="info-card-content">
+      <div *ngFor="let content of charts" class="info-card-content-charts">
+        {{ content.name }} {{ content.level }}
+      </div>
+    </div>
     <div class="info-card-footer">
       <div class="info-card-footer-reference"></div>
       <div class="info-card-footer-icons"></div>

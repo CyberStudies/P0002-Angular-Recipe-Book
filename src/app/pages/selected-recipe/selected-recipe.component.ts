@@ -11,6 +11,11 @@ import recipes from '@/utils/recipes';
 export class SelectedRecipeComponent implements OnInit {
   id: string = 'String not found';
   recipe: Recipe | undefined;
+  charts: any = [
+    { name: 'tastyness', level: 6 },
+    { name: 'tastyness', level: 6 },
+    { name: 'tastyness', level: 6 },
+  ];
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
