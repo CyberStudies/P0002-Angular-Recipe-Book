@@ -41,10 +41,21 @@
       </div>
     </div>
     <div class="info-card-content">
-      <div *ngFor="let content of charts" class="info-card-content-charts">
-        {{ content.name }} {{ content.level }}
+      <div *ngFor="let content of charts" style="width: 90%">
+        <div class="bar-name">{{ content.name }}</div>
+        <div class="bar-container">
+          <div
+            class="bar"
+            [style.width.%]="content.level * 10"
+            (mouseover)="hover = true"
+            (mouseout)="hover = false"
+          >
+            <div *ngIf="hover" class="bar-level">{{ content.level * 10 }}</div>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="info-card-footer">
       <div class="info-card-footer-reference">
         <i class="material-icons info-card-footer-reference-icon">

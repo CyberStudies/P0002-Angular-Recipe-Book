@@ -11,10 +11,11 @@ import recipes from '@/utils/recipes';
 export class SelectedRecipeComponent implements OnInit {
   id: string = 'String not found';
   recipe: Recipe | undefined;
+  hover = false;
   charts: any = [
-    { name: 'tastyness', level: 6 },
-    { name: 'tastyness', level: 6 },
-    { name: 'tastyness', level: 6 },
+    { name: 'Tastyness', level: 9 },
+    { name: 'Difficulty', level: 1 },
+    { name: 'Aproval', level: 4 },
   ];
   constructor(private route: ActivatedRoute) {}
 
