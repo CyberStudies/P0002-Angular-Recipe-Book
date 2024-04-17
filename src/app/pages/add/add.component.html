@@ -1,1 +1,42 @@
-<p>add works!</p>
+<div class="recipe">
+  <div class="recipe-set" *ngIf="!next">
+    <div class="recipe-set-definition">
+      <input class="recipe-name" type="text" placeholder="Recipe Name..." />:
+      <div>
+        <button>Coffee</button> | <button>Lunch</button> |
+        <button>Dinner</button> | <button>Drink</button> |
+        <button>Others</button>;
+      </div>
+    </div>
+    <div class="recipe-set-definition">
+      <input type="number" placeholder="Serve..." />
+      <input class="range" type="range" min="1" max="3" step="1" value="1" />
+    </div>
+    <div class="recipe-set-tags">
+      <label><input type="checkbox" /> Vegan</label>
+      <label><input type="checkbox" /> Vegetarian</label>
+      <label><input type="checkbox" /> Lactose</label>
+      <label><input type="checkbox" /> Gluten Free</label>
+      <label><input type="checkbox" /> No Sugar</label>
+      <label><input type="checkbox" /> Fitness</label>
+    </div>
+  </div>
+
+  <div class="recipe-script" *ngIf="next">
+    <div class="ingredients">
+      <div class="section">name ingredient egg : unity = 1 ; +</div>
+    </div>
+
+    <div class="instructions">
+      <div class="section-instruction">*ngFor</div>
+    </div>
+    <button></button>
+  </div>
+
+  <button class="btn-toggle" (click)="next = !next">
+    <i *ngIf="!next" class="material-icons">arrow_forward_ios</i>
+    <i *ngIf="next" class="material-icons">arrow_back_ios</i>
+  </button>
+
+  <img src="../../../assets/Img/back.jpg" />
+</div>
