@@ -15,16 +15,23 @@ input{
 input:focus {  outline: 1px solid white;
 }
 
+
+
 img{
     opacity: 0.25;
     width: 100%;
     position: absolute;
     z-index: -10;
 }
-
+.type-btn{
+  background-color: transparent;
+  color:white
+}
 .range:focus{
     outline: none;
 }
+
+
 .recipe{
   color: white;
   width: 100%;
