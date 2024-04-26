@@ -1,3 +1,4 @@
+import { FoodType } from '@/utils/enums';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './add.component.scss',
 })
 export class AddComponent {
+  selectedType: string | undefined;
+
+  selectType(type: string) {
+    this.selectedType = type;
+  }
+
   next = false;
 }

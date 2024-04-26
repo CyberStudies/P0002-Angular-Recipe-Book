@@ -3,11 +3,17 @@
     <div class="recipe-set-definition">
       <input class="recipe-name" type="text" placeholder="Recipe Name..." />:
       <div>
-        <button class="type-btn">Coffee</button> |
-        <button class="type-btn">Lunch</button> |
-        <button class="type-btn">Dinner</button> |
-        <button class="type-btn">Drink</button> |
-        <button class="type-btn">Others</button>;
+        <button class="type-btn" id="1" (click)="selectType('Coffee')">
+          Coffee
+        </button>
+        <button class="type-btn" id="2" (click)="selectType('Lunch')">
+          Lunch
+        </button>
+        <button class="type-btn" id="3" (click)="selectType('Dinner')">
+          Dinner
+        </button>
+        <button class="type-btn" (click)="selectType('Drink')">Drink</button>
+        <button class="type-btn" (click)="selectType('Others')">Others</button>
       </div>
     </div>
     <div class="recipe-set-definition">
