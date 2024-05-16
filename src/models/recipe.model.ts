@@ -11,3 +11,18 @@ export interface Recipe {
   likes: number;
   type: FoodType;
 }
+// recipe.model.ts
+export interface Ingredient {
+  name: string;
+  quantity: string;
+}
+
+export interface PreparationStep {
+  description: string;
+}
+
+export interface Section {
+  name: string;
+  ingredients: Ingredient[];
+  preparationSteps: PreparationStep[];
+}
