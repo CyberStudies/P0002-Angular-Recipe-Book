@@ -15,6 +15,7 @@ export interface Recipe {
 export interface Ingredient {
   name: string;
   quantity: string;
+  kind: string;
 }
 
 export interface PreparationStep {

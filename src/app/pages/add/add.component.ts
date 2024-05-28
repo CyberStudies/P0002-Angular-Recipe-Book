@@ -52,7 +52,11 @@ export class AddComponent {
     });
   }
   addIngredient(sectionIndex: number) {
-    this.sections[sectionIndex].ingredients.push({ name: '', quantity: '' });
+    this.sections[sectionIndex].ingredients.push({
+      name: '',
+      quantity: '',
+      kind: '',
+    });
   }
 
   addPreparationStep(sectionIndex: number) {

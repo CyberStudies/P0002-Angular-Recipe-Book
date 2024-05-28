@@ -94,7 +94,26 @@
       <div class="ingredients">
         <h3>Ingredients:</h3>
         <div *ngFor="let ingredient of section.ingredients; let i = index">
-          <div>{{ ingredient.name }} - {{ ingredient.quantity }}</div>
+          <div>
+            <input
+              type="text"
+              [(ngModel)]="ingredient.name"
+              placeholder="name"
+            />:
+            <input
+              type="text"
+              [(ngModel)]="ingredient.kind"
+              placeholder="measurement"
+            />
+            =
+            <input
+              type="text"
+              [(ngModel)]="ingredient.quantity"
+              placeholder="quantity"
+            />
+            {{ ingredient.name }}
+            {{ ingredient.quantity }}
+          </div>
         </div>
         <button (click)="addIngredient(sectionIndex)">Add Ingredient</button>
       </div>
@@ -102,6 +121,7 @@
         <h3>Prepare mode:</h3>
         <div *ngFor="let step of section.preparationSteps; let i = index">
           <div>Step {{ i + 1 }}: {{ step.description }}</div>
+          <textarea class="test"></textarea>
         </div>
         <button (click)="addPreparationStep(sectionIndex)">
           Add Preparation Step
@@ -115,6 +135,4 @@
     <i *ngIf="!next" class="material-icons">arrow_forward</i>
     <i *ngIf="next" class="material-icons">arrow_back</i>
   </button>
-
-  <!-- <img src="../../../assets/Img/back.jpg" /> -->
 </div>
