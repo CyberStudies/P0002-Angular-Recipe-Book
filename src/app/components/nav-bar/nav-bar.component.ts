@@ -1,3 +1,4 @@
+// nav-bar.component.ts
 import {
   Component,
   HostListener,
@@ -5,8 +6,10 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { Router } from '@angular/router';
+
+import { Router, NavigationEnd } from '@angular/router';
 import { SearchService } from '@/services/search.service';
+import { AutocompleteService } from '@/services/autocomplete.service';
 import { FoodType } from '@/utils/enums';
 import { FoodFilterService } from '@/services/food-filter.service';
 
@@ -27,13 +30,23 @@ export class NavBarComponent implements AfterViewInit {
   dropdownVisible = false;
   FoodType = FoodType;
 
+  isExploreRoute = false;
+  autocompleteSuggestions: string[] = [];
+
   constructor(
     public router: Router,
     public searchService: SearchService,
-    private foodFilterService: FoodFilterService
-  ) {}
+    private foodFilterService: FoodFilterService,
+    private autocompleteService: AutocompleteService
+  ) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isExploreRoute = event.urlAfterRedirects.includes('/explore');
+      }
+    });
+  }
   ngAfterViewInit(): void {}
-
+  selectedIndex = -1;
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     if (event.ctrlKey && event.key === 'f') {
@@ -68,5 +81,25 @@ export class NavBarComponent implements AfterViewInit {
 
   selectFoodType(type: FoodType): void {
     this.foodFilterService.changeFoodType(type);
+  }
+
+  onSearchInputChange(term: string) {
+    this.searchService.updateSearchTerm(term);
+    if (term) {
+      this.autocompleteSuggestions =
+        this.autocompleteService.getAutocompleteSuggestions(term);
+      this.selectedIndex = -1; // Reset the selected index when the input changes
+    } else {
+      this.autocompleteSuggestions = [];
+    }
+  }
+
+  onSearchSubmit(term: string) {
+    this.autocompleteService.insert(term);
+  }
+  onSuggestionClick(suggestion: string) {
+    this.searchService.updateSearchTerm(suggestion);
+    this.searchInput.nativeElement.value = suggestion;
+    this.autocompleteSuggestions = [];
   }
 }

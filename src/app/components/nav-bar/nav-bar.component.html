@@ -21,10 +21,20 @@
           class="search-input"
           ripple
           (focus)="addRippleEffect()"
-          (input)="searchService.updateSearchTerm(searchInput.value)"
+          (input)="onSearchInputChange(searchInput.value)"
+          (keydown.enter)="onSearchSubmit(searchInput.value)"
         />
 
-        <app-drop-down></app-drop-down>
+        <div
+          class="search-container-suggestions"
+          *ngFor="let suggestion of autocompleteSuggestions; let i = index"
+          [class.selected]="i === selectedIndex"
+          (click)="onSuggestionClick(suggestion)"
+        >
+          {{ suggestion }}
+        </div>
+
+        <app-drop-down *ngIf="isExploreRoute"></app-drop-down>
       </div>
     </div>
   </div>

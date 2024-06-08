@@ -13,6 +13,7 @@ import { LastUpdatedComponent } from './components/last-updated/last-updated.com
 import { DropDownComponent } from '../utils/drop-down/drop-down.component';
 import { RecipesTableComponent } from './pages/recipes-table/recipes-table.component';
 import { SelectedRecipeComponent } from './pages/selected-recipe/selected-recipe.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FormatLikesPipe } from '../utils/pipes/format-likes.pipe';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -31,7 +32,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     SelectedRecipeComponent,
     FormatLikesPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
