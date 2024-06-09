@@ -1,3 +1,4 @@
+//autocomplete.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -10,22 +11,28 @@ import { NodeTree } from './BinaryTree/NodeTree';
 export class AutocompleteService {
   tree: BinaryTree;
   storageKey: string = 'BinaryTreeData';
+  frequencies: Map<string, number>;
 
   constructor(private http: HttpClient) {
     this.tree = new BinaryTree();
+    this.frequencies = new Map();
     this.loadTree();
   }
 
+  insert(terms: string) {
+    if (!this.tree.search(terms)) {
+      this.tree.insert(terms);
+    }
+    this.frequencies.set(terms, (this.frequencies.get(terms) || 0) + 1); // Increment the frequency count
+    this.saveTree();
+  }
   getAutocompleteSuggestions(term: string): string[] {
     let suggestions: string[] = [];
     this.tree.getSuggestionsRec(this.tree.root, term, suggestions);
+    suggestions.sort(
+      (a, b) => (this.frequencies.get(b) || 0) - (this.frequencies.get(a) || 0)
+    ); // Sort by frequency count
     return suggestions;
-  }
-  insert(terms: string) {
-    terms.split(' ').forEach((term) => {
-      this.tree.insert(term);
-    });
-    this.saveTree();
   }
 
   saveTree() {

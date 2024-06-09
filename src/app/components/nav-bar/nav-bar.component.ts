@@ -47,7 +47,7 @@ export class NavBarComponent implements AfterViewInit {
   }
   ngAfterViewInit(): void {}
   selectedIndex = -1;
-  @HostListener('window:keydown', ['$event'])
+  @HostListener('keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     if (event.ctrlKey && event.key === 'f') {
       event.preventDefault();
@@ -61,6 +61,38 @@ export class NavBarComponent implements AfterViewInit {
         if (this.searchInput && this.searchInput.nativeElement) {
           this.searchInput.nativeElement.focus();
         }
+      }
+    }
+
+    if (
+      this.searchInput.nativeElement === document.activeElement &&
+      this.autocompleteSuggestions.length > 0
+    ) {
+      switch (event.key) {
+        case 'ArrowUp':
+          event.preventDefault();
+          if (this.selectedIndex > 0) {
+            this.selectedIndex--;
+          }
+          break;
+        case 'ArrowDown':
+          event.preventDefault();
+          if (this.selectedIndex < this.autocompleteSuggestions.length - 1) {
+            this.selectedIndex++;
+          }
+          break;
+        case 'Tab':
+          event.preventDefault();
+          this.onSearchSubmit(this.autocompleteSuggestions[this.selectedIndex]);
+          if (
+            this.selectedIndex !== -1 &&
+            this.autocompleteSuggestions[this.selectedIndex]
+          ) {
+            this.onSuggestionClick(
+              this.autocompleteSuggestions[this.selectedIndex]
+            );
+          }
+          break;
       }
     }
   }
@@ -88,7 +120,7 @@ export class NavBarComponent implements AfterViewInit {
     if (term) {
       this.autocompleteSuggestions =
         this.autocompleteService.getAutocompleteSuggestions(term);
-      this.selectedIndex = -1; // Reset the selected index when the input changes
+      this.selectedIndex = -1;
     } else {
       this.autocompleteSuggestions = [];
     }

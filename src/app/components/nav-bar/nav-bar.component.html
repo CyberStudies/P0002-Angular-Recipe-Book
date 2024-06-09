@@ -25,16 +25,17 @@
           (keydown.enter)="onSearchSubmit(searchInput.value)"
         />
 
+        <app-drop-down *ngIf="isExploreRoute"></app-drop-down>
+      </div>
+      <div class="search-container-suggestions">
         <div
-          class="search-container-suggestions"
+          class="search-container-suggestions-sugestion"
           *ngFor="let suggestion of autocompleteSuggestions; let i = index"
           [class.selected]="i === selectedIndex"
           (click)="onSuggestionClick(suggestion)"
         >
           {{ suggestion }}
         </div>
-
-        <app-drop-down *ngIf="isExploreRoute"></app-drop-down>
       </div>
     </div>
   </div>

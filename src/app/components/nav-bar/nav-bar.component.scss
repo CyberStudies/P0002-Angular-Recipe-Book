@@ -19,7 +19,7 @@ $after-height: 4px;
 .navbar {
   position: sticky;
   top: 0;
-  overflow: hidden;
+  // overflow: hidden;
   background-color: $dark-gray;
   align-items: center;
 
@@ -125,6 +125,7 @@ $after-height: 4px;
 }
 
 .search-container {
+  position: relative;
   display: flex;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.1);
@@ -181,8 +182,27 @@ $after-height: 4px;
     opacity: 0;
   }
 }
+.search-container-suggestions {
+  position: absolute;
+  top: 100%;
+  right: 11.5%;
+  width: 20%;
+  background-color: #808080fa;
 
-.search-container-suggestions.selected {
-  background-color: #ddd;
 }
+.search-container-suggestions-sugestion {
+  background-color: #808080fa;
+  padding: 5px;
+}
+.search-container-suggestions-sugestion.selected {
+  background-color: #f0f0f0;
+}
+
+
+.search-container-suggestions-sugestion:hover {
+
+  background-color: #fffffffa;
+
+}
+
 
