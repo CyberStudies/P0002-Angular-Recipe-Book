@@ -4,13 +4,14 @@ import { Section, Ingredient, PreparationStep } from '@/models/recipe.model';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
-  styleUrl: './add.component.scss',
+  styleUrls: ['./add.component.scss'],
 })
 export class AddComponent {
   sections: Section[] = [];
   selectedType: string | undefined;
   condition: number = 1;
   serve: number | undefined;
+  activeSectionIndex: number = 0;
 
   validateServe(event: Event) {
     const num = (event.target as HTMLInputElement).value;
@@ -50,7 +51,9 @@ export class AddComponent {
       ingredients: [],
       preparationSteps: [],
     });
+    this.activeSectionIndex = this.sections.length - 1;
   }
+
   addIngredient(sectionIndex: number) {
     this.sections[sectionIndex].ingredients.push({
       name: '',
@@ -61,5 +64,9 @@ export class AddComponent {
 
   addPreparationStep(sectionIndex: number) {
     this.sections[sectionIndex].preparationSteps.push({ description: '' });
+  }
+
+  setActiveSection(index: number) {
+    this.activeSectionIndex = index;
   }
 }

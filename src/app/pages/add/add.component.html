@@ -84,51 +84,87 @@
 
   <!-- recipe.component.html -->
   <div class="recipe-script" *ngIf="next">
-    <div *ngFor="let section of sections; let sectionIndex = index">
+    <nav class="tabs">
+      <div
+        *ngFor="let section of sections; let sectionIndex = index"
+        [class.active]="activeSectionIndex === sectionIndex"
+        (click)="setActiveSection(sectionIndex)"
+        class="tab"
+      >
+        {{ section.name || "Unnamed Section" }}
+      </div>
+      <button class="add-section-btn" (click)="addSection()">
+        + Add Section
+      </button>
+    </nav>
+    <div class="section-content" *ngIf="sections.length > 0">
       <input
         type="text"
-        [(ngModel)]="section.name"
+        [(ngModel)]="sections[activeSectionIndex].name"
         placeholder="Section Name"
+        class="section-name"
       />
 
       <div class="ingredients">
         <h3>Ingredients:</h3>
-        <div *ngFor="let ingredient of section.ingredients; let i = index">
+        <div
+          class="ingredient"
+          *ngFor="
+            let ingredient of sections[activeSectionIndex].ingredients;
+            let i = index
+          "
+        >
           <div>
             <input
               type="text"
               [(ngModel)]="ingredient.name"
               placeholder="name"
-            />:
+              class="ingredient-input"
+            />
+            :
             <input
               type="text"
               [(ngModel)]="ingredient.kind"
               placeholder="measurement"
+              class="ingredient-input"
             />
             =
             <input
               type="text"
               [(ngModel)]="ingredient.quantity"
               placeholder="quantity"
+              class="ingredient-input"
             />
-            {{ ingredient.name }}
-            {{ ingredient.quantity }}
           </div>
         </div>
-        <button (click)="addIngredient(sectionIndex)">Add Ingredient</button>
+        <button (click)="addIngredient(activeSectionIndex)" class="add-btn">
+          Add Ingredient
+        </button>
       </div>
       <div class="prepare-mode">
         <h3>Prepare mode:</h3>
-        <div *ngFor="let step of section.preparationSteps; let i = index">
-          <div>Step {{ i + 1 }}: {{ step.description }}</div>
-          <textarea class="test"></textarea>
+        <div
+          *ngFor="
+            let step of sections[activeSectionIndex].preparationSteps;
+            let i = index
+          "
+        >
+          <div class="prepare-step">
+            Step {{ i + 1 }}:
+            <textarea
+              [(ngModel)]="step.description"
+              class="step-description"
+            ></textarea>
+          </div>
         </div>
-        <button (click)="addPreparationStep(sectionIndex)">
+        <button
+          (click)="addPreparationStep(activeSectionIndex)"
+          class="add-btn"
+        >
           Add Preparation Step
         </button>
       </div>
     </div>
-    <button (click)="addSection()">Add Section</button>
   </div>
 
   <button class="btn-toggle" (click)="next = !next">
