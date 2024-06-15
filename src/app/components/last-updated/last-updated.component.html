@@ -4,13 +4,17 @@
     <div class="card-box">
       <div>
         <div class="ingredients-list">
-          <ul
-            *ngFor="
-              let ingredient of ingredients
-                | slice : (currentPage - 1) * pageSize : currentPage * pageSize
-            "
-          >
-            <li>{{ ingredient }}</li>
+          <ul>
+            <li
+              *ngFor="
+                let ingredient of ingredients
+                  | slice
+                    : (currentPage - 1) * pageSize
+                    : currentPage * pageSize
+              "
+            >
+              <span class="scrolling-text">{{ ingredient }}</span>
+            </li>
           </ul>
         </div>
         <div class="ingredients-list-page">

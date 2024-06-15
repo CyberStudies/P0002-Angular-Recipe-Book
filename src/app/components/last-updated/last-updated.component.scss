@@ -20,7 +20,6 @@ $button-color: #44475a;
   width: min-content;
   margin: 0.5rem;
 
-
   &-title {
     padding: 0.5rem;
     font-size: 1.3rem;
@@ -47,30 +46,44 @@ $button-color: #44475a;
       .ingredients-list {
         width: 17vw;
         align-items: center;
+        overflow: hidden;
 
-        ul li {
-          height: 100%;
-          border-bottom: 1px solid $button-color;
-          margin-left: 3rem;
-          margin-right: 3rem;
-          max-width: 100%;
-          font-size: 0.87rem;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          transition: all 2s;
+        ul {
+          padding: 0;
+          margin: 0;
+          list-style: none;
+
+          li {
+            height: 100%;
+            border-bottom: 1px solid $button-color;
+            margin-left: 3rem;
+            margin-right: 3rem;
+            margin-bottom: 10px;
+            max-width: 100%;
+            font-size: 0.87rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+
+            &:hover .scrolling-text {
+              animation: scroll 10s linear infinite;
+            }
+
+            .scrolling-text {
+              display: inline-block;
+              white-space: nowrap;
+            }
+          }
         }
 
-        &:hover ul li {
-          text-overflow: clip;
-          animation: slide 10s linear infinite;
-        }
-
-        @keyframes slide {
-          0% { text-indent: 0%; }
-          50% { text-indent: -170%; }
-          50.0000001% { text-indent: 100%; }
-          100% { text-indent: 0%; }
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
         }
       }
 
@@ -119,5 +132,7 @@ $button-color: #44475a;
 }
 
 ul {
-  padding: 0px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
