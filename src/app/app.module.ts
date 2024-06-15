@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // Import the FormsModule
 
+import { RouterModule } from '@angular/router';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -17,6 +19,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FormatLikesPipe } from '../utils/pipes/format-likes.pipe';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { UserComponent } from './pages/user/user.component';
+import { AuthComponent } from './components/authentication/auth/auth.component';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { SignUpComponent } from './components/authentication/sign-up/sign-up.component';
+import { RecoverComponent } from './components/authentication/recover/recover.component';
+import { AccountComponent } from './components/user/account/account.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +39,20 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     RecipesTableComponent,
     SelectedRecipeComponent,
     FormatLikesPipe,
+    UserComponent,
+    AuthComponent,
+    LoginComponent,
+    SignUpComponent,
+    RecoverComponent,
+    AccountComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+  ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })

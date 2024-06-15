@@ -7,6 +7,13 @@ import { AddComponent } from './pages/add/add.component';
 import { SelectedRecipeComponent } from './pages/selected-recipe/selected-recipe.component';
 import { RecipesTableComponent } from './pages/recipes-table/recipes-table.component';
 
+import { AuthComponent } from './components/authentication/auth/auth.component';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { SignUpComponent } from './components/authentication/sign-up/sign-up.component';
+import { RecoverComponent } from './components/authentication/recover/recover.component';
+import { UserComponent } from './pages/user/user.component';
+import { AccountComponent } from './components/user/account/account.component';
+
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'explore', component: RecipesTableComponent },
@@ -14,6 +21,23 @@ const routes: Routes = [
   { path: 'add', component: AddComponent },
   { path: 'recipe/:id', component: SelectedRecipeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // redirect to `home` route by default
+
+  {
+    path: 'user',
+    component: UserComponent,
+    children: [
+      { path: 'account', component: AccountComponent },
+      {
+        path: 'auth',
+        component: AuthComponent,
+        children: [
+          { path: '', component: LoginComponent },
+          { path: 'sign-up', component: SignUpComponent },
+          { path: 'recover', component: RecoverComponent },
+        ],
+      },
+    ],
+  },
 ];
 
 @NgModule({

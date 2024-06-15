@@ -1,7 +1,7 @@
 <nav class="navbar default-border-top-bottom">
   <div class="elements">
     <button class="menu-button">
-      <i class="material-icons">menu</i>
+      <i class="material-icons" [routerLink]="['/user/auth']">person</i>
     </button>
     <div class="spacer"></div>
     <ng-container *ngFor="let link of links">
