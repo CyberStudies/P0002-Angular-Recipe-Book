@@ -6,7 +6,7 @@
         <div class="ingredients-list">
           <ul
             *ngFor="
-              let ingredient of recipe.ingredients
+              let ingredient of ingredients
                 | slice : (currentPage - 1) * pageSize : currentPage * pageSize
             "
           >

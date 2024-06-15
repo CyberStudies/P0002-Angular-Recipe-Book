@@ -1,6 +1,6 @@
-// my-component.ts
 import { Component } from '@angular/core';
-import recipes from '../../../utils/recipes';
+import recipes from '@/utils/recipes';
+import { Recipe } from '@/models/recipe.model';
 import { FoodType } from '@/utils/enums';
 import { NavigationService } from '@/services/navigation.service';
 import { FoodFilterService } from '@/services/food-filter.service';
@@ -14,6 +14,11 @@ import { SearchService } from '@/services/search.service';
 export class RecipesTableComponent {
   searchTerm: string = '';
   selectedFoodType: FoodType | null = null;
+
+  allRecipes: Recipe[] = recipes;
+  currentPage: number = 1;
+  itemsPerPage: number = 20;
+
   constructor(
     private navigationService: NavigationService,
     private foodFilterService: FoodFilterService,
@@ -27,10 +32,6 @@ export class RecipesTableComponent {
       this.searchTerm = term;
     });
   }
-
-  allRecipes: Recipe[] = recipes;
-  currentPage: number = 1;
-  itemsPerPage: number = 20;
 
   get currentRecipes(): Recipe[] {
     let filteredRecipes = this.allRecipes;
@@ -92,17 +93,8 @@ export class RecipesTableComponent {
         return 'Unknown';
     }
   }
+
   goto(id: number) {
     this.navigationService.goto(id);
   }
-}
-
-interface Recipe {
-  id: number;
-  name: string;
-  ingredients: string[];
-  image: string;
-  date: number;
-  likes: number;
-  type: FoodType;
 }

@@ -22,9 +22,8 @@ export class MostRatedRecipeCardComponent {
       return {
         id: 0,
         name: '',
-        ingredients: [],
-        instructions: [],
         image: '',
+        sections: [],
         date: 0,
         likes: 0,
         type: FoodType.Others,

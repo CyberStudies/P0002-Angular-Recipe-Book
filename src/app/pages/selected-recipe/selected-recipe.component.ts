@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Recipe } from '@/models/recipe.model'; // Import the Recipe type from the correct location
+import { Recipe } from '@/models/recipe.model';
 import recipes from '@/utils/recipes';
 
 @Component({
@@ -15,13 +15,29 @@ export class SelectedRecipeComponent implements OnInit {
   charts: any = [
     { name: 'Tastyness', level: 9 },
     { name: 'Difficulty', level: 1 },
-    { name: 'Aproval', level: 4 },
+    { name: 'Approval', level: 4 },
   ];
+
+  expandedSectionIndex: number | null = null;
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || 'Id not found';
+    this.recipe = recipes.find(
+      (recipe: Recipe) => recipe.id === Number(this.id)
+    );
+  }
 
-    this.recipe = recipes.find((recipe) => recipe.id === Number(this.id));
+  toggleSection(index: number) {
+    if (this.expandedSectionIndex === index) {
+      this.expandedSectionIndex = null;
+    } else {
+      this.expandedSectionIndex = index;
+    }
+  }
+
+  isSectionOpen(index: number): boolean {
+    return this.expandedSectionIndex === index;
   }
 }

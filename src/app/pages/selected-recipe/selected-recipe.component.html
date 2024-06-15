@@ -2,9 +2,24 @@
   <div class="itens-card">
     <span class="card-itens-title">Itens</span>
     <ul>
-      <ng-container *ngFor="let ingredient of recipe?.ingredients">
-        <li style="padding-bottom: 10px" *ngIf="ingredient">
-          {{ ingredient }}
+      <ng-container
+        *ngFor="let section of recipe?.sections; let sectionIndex = index"
+      >
+        <li style="padding-bottom: 10px" *ngIf="section">
+          <div
+            (click)="toggleSection(sectionIndex)"
+            style="cursor: pointer; font-weight: bold"
+          >
+            {{ section.name }}
+          </div>
+          <ul *ngIf="isSectionOpen(sectionIndex)">
+            <ng-container *ngFor="let ingredient of section.ingredients">
+              <li>
+                {{ ingredient.name }}: {{ ingredient.quantity }}
+                {{ ingredient.kind }}
+              </li>
+            </ng-container>
+          </ul>
         </li>
       </ng-container>
     </ul>
@@ -13,18 +28,23 @@
   <div class="card-instructions">
     <span class="card-instructions-title">Instructions</span>
     <div>
-      <div
-        class="card-instructions-list"
-        *ngFor="let instruction of recipe?.instructions; let i = index"
-      >
-        <div class="card-instructions-ennumeration">{{ i + 1 }}</div>
-        <div class="card-instructions-text">{{ instruction }}</div>
-      </div>
+      <ng-container *ngFor="let section of recipe?.sections">
+        <div class="section-instructions">
+          <div style="font-weight: bold">{{ section.name }}</div>
+          <div
+            class="card-instructions-list"
+            *ngFor="let step of section.preparationSteps; let i = index"
+          >
+            <div class="card-instructions-ennumeration">{{ i + 1 }}</div>
+            <div class="card-instructions-text">{{ step.description }}</div>
+          </div>
+        </div>
+      </ng-container>
     </div>
   </div>
 
   <div class="img-card">
-    <img :src="{{ recipe?.image }}" />
+    <img [src]="recipe?.image" />
   </div>
 
   <div class="info-card">
@@ -33,13 +53,16 @@
         <img src="../../../assets/Img/Logo.jpg" />
         <div style="width: 100%">
           <div class="info-card-head-profile-main">
-            <div class="info-card-head-profile-name">nome #id</div>
+            <div class="info-card-head-profile-name">
+              nome #{{ recipe?.id }}
+            </div>
             <div class="info-card-head-profile-level">11</div>
           </div>
           <div class="info-card-head-profile-badges">teste</div>
         </div>
       </div>
     </div>
+
     <div class="info-card-content">
       <div *ngFor="let content of charts" style="width: 90%">
         <div class="bar-name">{{ content.name }}</div>
@@ -58,9 +81,9 @@
 
     <div class="info-card-footer">
       <div class="info-card-footer-reference">
-        <i class="material-icons info-card-footer-reference-icon">
-          monetization_onmonetization_onmonetization_on
-        </i>
+        <i class="material-icons info-card-footer-reference-icon"
+          >monetization_onmonetization_onmonetization_on</i
+        >
         <div>
           <i class="material-icons info-card-footer-reference-icon-2">group</i
           >|6
