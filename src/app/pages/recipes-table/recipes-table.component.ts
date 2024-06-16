@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import recipes from '@/utils/recipes';
+// import recipes from '@/utils/recipes';
 import { Recipe } from '@/models/recipe.model';
 import { FoodType } from '@/utils/enums';
 import { NavigationService } from '@/services/navigation.service';
 import { FoodFilterService } from '@/services/food-filter.service';
 import { SearchService } from '@/services/search.service';
+
+import { FirebaseService } from '@/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-recipes-table',
@@ -15,14 +17,15 @@ export class RecipesTableComponent {
   searchTerm: string = '';
   selectedFoodType: FoodType | null = null;
 
-  allRecipes: Recipe[] = recipes;
+  allRecipes: Recipe[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 20;
-
+  recipes: any[] = [];
   constructor(
     private navigationService: NavigationService,
     private foodFilterService: FoodFilterService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private firebaseService: FirebaseService
   ) {
     this.foodFilterService.currentFoodType.subscribe(
       (foodType) => (this.selectedFoodType = foodType)
@@ -30,6 +33,14 @@ export class RecipesTableComponent {
     this.searchService.currentSearchTerm.subscribe((term) => {
       console.log('Received new search term:', term);
       this.searchTerm = term;
+    });
+  }
+
+  ngOnInit() {
+    this.firebaseService.getAllRecipes(); // Fetch all recipes from the database
+    this.firebaseService.recipes$.subscribe((data) => {
+      console.log(data);
+      this.allRecipes = data;
     });
   }
 
@@ -94,7 +105,7 @@ export class RecipesTableComponent {
     }
   }
 
-  goto(id: number) {
+  goto(id: string) {
     this.navigationService.goto(id);
   }
 }

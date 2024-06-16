@@ -20,7 +20,7 @@ export class MostRatedRecipeCardComponent {
   get recipe(): Recipe {
     if (!this._recipe) {
       return {
-        id: 0,
+        id: '0',
         name: '',
         image: '',
         sections: [],

@@ -30,11 +30,11 @@ export class HomePageComponent implements OnInit {
     this.lastUpdatedRecipes = this.allRecipes.slice(0, 10);
   }
 
-  goto(id: number) {
+  goto(id: string) {
     this.navigationService.goto(id);
   }
 
-  trackByRecipeId(index: number, recipe: Recipe): number {
+  trackByRecipeId(index: number, recipe: Recipe): string {
     return recipe.id;
   }
 }

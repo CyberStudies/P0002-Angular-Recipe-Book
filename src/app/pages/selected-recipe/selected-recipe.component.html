@@ -1,6 +1,6 @@
 <div class="card">
   <div class="itens-card">
-    <span class="card-itens-title">Itens</span>
+    <span class="card-itens-title">Items</span>
     <ul>
       <ng-container
         *ngFor="let section of recipe?.sections; let sectionIndex = index"
@@ -28,15 +28,11 @@
   <div class="card-instructions">
     <span class="card-instructions-title">Instructions</span>
     <div>
-      <ng-container *ngFor="let section of recipe?.sections">
+      <ng-container *ngFor="let step of allPreparationSteps; let i = index">
         <div class="section-instructions">
-          <div style="font-weight: bold">{{ section.name }}</div>
-          <div
-            class="card-instructions-list"
-            *ngFor="let step of section.preparationSteps; let i = index"
-          >
-            <div class="card-instructions-ennumeration">{{ i + 1 }}</div>
-            <div class="card-instructions-text">{{ step.description }}</div>
+          <div class="card-instructions-list">
+            <div class="card-instructions-enumeration">{{ i + 1 }}</div>
+            <div class="card-instructions-text">{{ step }}</div>
           </div>
         </div>
       </ng-container>

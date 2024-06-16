@@ -18,7 +18,7 @@ export interface Section {
 }
 
 export interface Recipe {
-  id: number;
+  id: string;
   name: string;
   sections: Section[];
   image: string;

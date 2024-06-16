@@ -26,6 +26,28 @@ import { SignUpComponent } from './components/authentication/sign-up/sign-up.com
 import { RecoverComponent } from './components/authentication/recover/recover.component';
 import { AccountComponent } from './components/user/account/account.component';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: 'AIzaSyBEF0GKLWYueeDFRiytKh8ByrO6Lo9mxG8',
+  authDomain: 'devdinner-ba753.firebaseapp.com',
+  projectId: 'devdinner-ba753',
+  storageBucket: 'devdinner-ba753.appspot.com',
+  messagingSenderId: '861359263381',
+  appId: '1:861359263381:web:c535d0f66b07d8c6cbd59c',
+  measurementId: 'G-E9SYZ3FFYG',
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +74,7 @@ import { AccountComponent } from './components/user/account/account.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    RouterModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

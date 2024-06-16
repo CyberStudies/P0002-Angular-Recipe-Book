@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Recipe } from '@/models/recipe.model';
-import recipes from '@/utils/recipes';
+import { FirebaseService } from '@/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-selected-recipe',
@@ -17,16 +17,33 @@ export class SelectedRecipeComponent implements OnInit {
     { name: 'Difficulty', level: 1 },
     { name: 'Approval', level: 4 },
   ];
-
+  allPreparationSteps: string[] = [];
   expandedSectionIndex: number | null = null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private firebaseService: FirebaseService
+  ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || 'Id not found';
-    this.recipe = recipes.find(
-      (recipe: Recipe) => recipe.id === Number(this.id)
-    );
+    console.log('Fetching recipe for ID:', this.id); // Debugging log
+    this.recipe = await this.firebaseService.getRecipe(this.id);
+    console.log('Fetched recipe:', this.recipe); // Debugging log
+    this.extractPreparationSteps();
+  }
+
+  extractPreparationSteps() {
+    this.allPreparationSteps = [];
+    if (this.recipe && this.recipe.sections) {
+      this.recipe.sections.forEach((section) => {
+        if (section.preparationSteps) {
+          this.allPreparationSteps = this.allPreparationSteps.concat(
+            section.preparationSteps.map((step) => step.description)
+          );
+        }
+      });
+    }
   }
 
   toggleSection(index: number) {

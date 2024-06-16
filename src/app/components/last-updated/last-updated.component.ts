@@ -24,7 +24,7 @@ export class LastUpdatedComponent implements OnInit {
     private dateService: DateService
   ) {
     this.recipe = {
-      id: 0,
+      id: '0',
       name: '',
       image: '',
       date: 0,
@@ -55,7 +55,7 @@ export class LastUpdatedComponent implements OnInit {
     this.totalPages = Math.ceil(this.ingredients.length / this.pageSize);
   }
 
-  goto(id: number) {
+  goto(id: string) {
     this.navigationService.goto(id);
   }
 }

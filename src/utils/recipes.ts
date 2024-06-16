@@ -3,14 +3,14 @@ import { Recipe } from '@/models/recipe.model';
 
 const recipes: Recipe[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Recipe 1',
     sections: [
       {
         name: 'Section 1',
         ingredients: [
-          { name: 'Ingredient 1', quantity: '1 cup', kind: 'type' },
-          { name: 'Ingredient 2', quantity: '2 tbsp', kind: 'type' },
+          { name: 'Ingredient 1', quantity: '1 ', kind: 'cup' },
+          { name: 'Ingredient 2', quantity: '2 ', kind: 'tbsp' },
         ],
         preparationSteps: [
           { description: 'Step 1' },
@@ -24,7 +24,7 @@ const recipes: Recipe[] = [
     type: 1,
   },
   {
-    id: 1,
+    id: '1',
     name: 'Cheesy Risoli',
     sections: [
       {
@@ -91,7 +91,7 @@ const recipes: Recipe[] = [
     type: 2,
   },
   {
-    id: 2,
+    id: '2',
     name: 'Delicious Pasta',
     sections: [
       {

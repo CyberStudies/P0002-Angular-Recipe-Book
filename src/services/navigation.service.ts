@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 export class NavigationService {
   constructor(private router: Router) {}
 
-  goto(id: number) {
+  goto(id: string) {
     this.router.navigate(['/recipe', id]);
   }
 }
