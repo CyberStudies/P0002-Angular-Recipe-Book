@@ -71,6 +71,7 @@ body {
       background-color: $dark-grey;
       padding: 0.5rem;
       border-bottom: 1px solid $light-grey;
+    
 
       .tab {
         padding: 0.5rem 1rem;
@@ -86,7 +87,7 @@ body {
         }
       }
 
-      .add-section-btn {
+      .add-section-btn, .submit-btn {
         background-color: $accent;
         border: none;
         padding: 0.5rem 1rem;
@@ -95,9 +96,14 @@ body {
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
+        margin-left: 1rem;
 
         &:hover {
           background-color: lighten($accent, 10%);
+        }
+
+        &:disabled {
+          cursor: not-allowed;
         }
       }
     }
@@ -171,6 +177,10 @@ textarea {
 
   &:hover {
     background-color: rgba(0, 183, 255, 0.3);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 

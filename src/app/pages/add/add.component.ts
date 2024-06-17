@@ -17,7 +17,7 @@ import { FoodType } from '@/utils/enums';
 export class AddComponent {
   sections: Section[] = [];
   selectedType: FoodType = 1;
-  condition: number = 1;
+  condition: number = 0;
   serve: number = 1;
   activeSectionIndex: number = 0;
   recipeName: string = '';
@@ -105,9 +105,16 @@ export class AddComponent {
       cost: this.condition,
       sections: this.sections,
     };
-
-    // Log the recipe object to the console (for testing purposes)
-    console.log(recipe);
+  
+    
+    this.recipeName = '';
+    this.selectedType = 1;
+    this.condition = 1;
+    this.serve = 1;
+    this.sections = [];
+    this.selectedFile = null;
+    this.recipeImage = '';
+  
 
     // Use your FirebaseService to send the recipe object to your backend
     this.firebaseService
@@ -118,5 +125,57 @@ export class AddComponent {
       .catch((error) => {
         console.error('Error adding recipe: ', error);
       });
+
+     
   }
+
+
+isSectionValid(section: Section) {
+
+  if (section.ingredients.length === 0 || section.preparationSteps.length === 0) {
+    return false;
+  }
+
+  for (let ingredient of section.ingredients) {
+    if (!ingredient.name ||  !ingredient.quantity) {
+      return false;
+    }
+  }
+
+  for (let step of section.preparationSteps) {
+    if (!step.description) {
+      return false;
+    }
+  }
+
+
+  return true;
+}
+
+
+isFormValid() {
+
+  if (!this.recipeName || this.selectedType === null || !this.serve || this.condition === null || !this.selectedFile) {
+    return false;
+  }
+
+  // Verifique se todas as seções são válidas
+  for (let section of this.sections) {
+    if (!this.isSectionValid(section)) {
+      return false;
+    }
+  }
+
+  // Se todas as verificações passaram, o formulário é válido
+  return true;
+}
+
+  
+
+
+  isFirstPageValid() {
+    return this.recipeName !== '' && this.selectedType !== null && this.serve > 0 && this.selectedFile !== null;
+}
+
+  
 }
