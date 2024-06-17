@@ -103,6 +103,7 @@
       <button class="add-section-btn" (click)="addSection()">
         + Add Section
       </button>
+      <button class="submit-btn"  [disabled]="!isFormValid()" *ngIf="next" (click)="submitRecipe()">Submit</button>
     </nav>
     <div class="section-content" *ngIf="sections.length > 0">
       <input
@@ -174,9 +175,12 @@
     </div>
   </div>
 
-  <button class="btn-toggle" (click)="next = !next">
+  <button class="btn-toggle" [disabled]="!isFirstPageValid()" (click)="next = !next">
     <i *ngIf="!next" class="material-icons">arrow_forward</i>
     <i *ngIf="next" class="material-icons">arrow_back</i>
   </button>
-  <button (click)="submitRecipe()">Submit</button>
+  
+  
+
+
 </div>
