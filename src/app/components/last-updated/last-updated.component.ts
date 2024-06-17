@@ -4,6 +4,7 @@ import { NavigationService } from '@/services/navigation.service';
 import { DateService } from '@/services/date.service';
 // import { RecipeSummary } from '@/models/recipe-summary.model';
 import { Ingredient, Recipe } from '@/models/recipe.model';
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-last-updated',
@@ -27,10 +28,13 @@ export class LastUpdatedComponent implements OnInit {
       id: '0',
       name: '',
       image: '',
-      date: 0,
+      date: Timestamp.fromDate(new Date()).toMillis(),
       likes: 0,
       type: 1,
       sections: [],
+      serve: 1,
+      userId: '',
+      cost: 1,
     };
   }
 

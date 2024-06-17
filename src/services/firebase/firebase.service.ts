@@ -11,8 +11,15 @@ import {
   setDoc,
   query,
   where,
+  addDoc,
 } from 'firebase/firestore/lite';
 import { Recipe, Section } from '@/models/recipe.model';
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -89,15 +96,65 @@ export class FirebaseService {
     try {
       const recipesRef = collection(this.db, 'Recipes');
       const recipesSnapshot = await getDocs(recipesRef);
-      const recipes = recipesSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as Recipe[];
+      const recipes = await Promise.all(
+        recipesSnapshot.docs.map(async (doc) => {
+          const recipeId = doc.id;
+          const recipeData = doc.data() as Recipe;
+          const sections = await this.getSections(recipeId);
+          return { ...recipeData, id: recipeId, sections };
+        })
+      );
       this.recipesSubject.next(recipes); // Update the BehaviorSubject with new data
     } catch (error) {
       console.error('Error fetching all recipes:', error);
       this.recipesSubject.next([]); // Emit an empty array on error
     }
+  }
+  async addRecipe(recipe: Recipe): Promise<string> {
+    try {
+      const recipesRef = collection(this.db, 'Recipes');
+      const docRef = await addDoc(recipesRef, recipe);
+      console.log('Document written with ID: ', docRef.id);
+
+      // Add each section to the Sections subcollection
+      for (let section of recipe.sections) {
+        const sectionsRef = collection(docRef, 'Sections');
+        await addDoc(sectionsRef, section);
+      }
+
+      return docRef.id; // return the auto-generated ID
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      throw error; // re-throw the error so it can be caught and handled by the caller
+    }
+  }
+
+  //storage related
+
+  async uploadFile(file: File): Promise<string> {
+    const storage = getStorage();
+    const storageRef = ref(storage, 'images/' + file.name);
+
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    return new Promise((resolve, reject) => {
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          // Handle progress updates
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+          reject(error);
+        },
+        () => {
+          // Handle successful uploads on complete
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            resolve(downloadURL);
+          });
+        }
+      );
+    });
   }
 
   constructor() {

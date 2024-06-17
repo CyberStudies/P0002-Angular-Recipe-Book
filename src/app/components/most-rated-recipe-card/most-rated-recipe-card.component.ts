@@ -1,8 +1,8 @@
 // most-rated-recipe-card.component.ts
 import { Component, Input } from '@angular/core';
-import recipes from '@/utils/recipes';
 import { FoodType } from '@/utils/enums';
 import { Recipe } from '@/models/recipe.model';
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-most-rated-recipe-card',
@@ -27,11 +27,13 @@ export class MostRatedRecipeCardComponent {
         date: 0,
         likes: 0,
         type: FoodType.Others,
+        serve: 1,
+        userId: '',
+        cost: 1,
       };
     }
     return this._recipe;
   }
-  allRecipes: Recipe[] = recipes;
 
   foodTypeNames = {
     [FoodType.Coffee]: 'Coffee',

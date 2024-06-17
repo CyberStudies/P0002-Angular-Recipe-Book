@@ -1,4 +1,5 @@
 import { FoodType } from '@/utils/enums';
+import { Timestamp } from 'firebase/firestore/lite';
 
 // src/models/recipe.model.ts
 export interface Ingredient {
@@ -25,4 +26,7 @@ export interface Recipe {
   date: number;
   likes: number;
   type: FoodType;
+  serve: number;
+  userId: string;
+  cost: number;
 }

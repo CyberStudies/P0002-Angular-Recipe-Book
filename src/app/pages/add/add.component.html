@@ -1,48 +1,54 @@
 <div class="recipe">
   <div class="recipe-set" *ngIf="!next">
     <div class="recipe-set-definition">
-      <input class="recipe-name" type="text" placeholder="Recipe Name" />:
+      <input
+        class="recipe-name"
+        type="text"
+        placeholder="Recipe Name"
+        [(ngModel)]="recipeName"
+      />
       <div>
         <button
           class="type-btn"
           id="1"
-          (click)="selectType('Coffee')"
-          [disabled]="selectedType === 'Coffee'"
+          (click)="selectType(0)"
+          [disabled]="selectedType === 0"
         >
           Coffee
         </button>
         <button
           class="type-btn"
           id="2"
-          (click)="selectType('Lunch')"
-          [disabled]="selectedType === 'Lunch'"
+          (click)="selectType(1)"
+          [disabled]="selectedType === 1"
         >
           Lunch
         </button>
         <button
           class="type-btn"
           id="3"
-          (click)="selectType('Dinner')"
-          [disabled]="selectedType === 'Dinner'"
+          (click)="selectType(2)"
+          [disabled]="selectedType === 2"
         >
           Dinner
         </button>
         <button
           class="type-btn"
-          (click)="selectType('Drink')"
-          [disabled]="selectedType === 'Drink'"
+          (click)="selectType(3)"
+          [disabled]="selectedType === 3"
         >
           Drink
         </button>
         <button
           class="type-btn"
-          (click)="selectType('Others')"
-          [disabled]="selectedType === 'Others'"
+          (click)="selectType(4)"
+          [disabled]="selectedType === 4"
         >
           Others
         </button>
       </div>
     </div>
+
     <div class="recipe-set-definition">
       <input
         type="number"
@@ -80,6 +86,7 @@
         <label><input type="checkbox" /> Fitness</label>
       </div>
     </div>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
   </div>
 
   <!-- recipe.component.html -->
@@ -171,4 +178,5 @@
     <i *ngIf="!next" class="material-icons">arrow_forward</i>
     <i *ngIf="next" class="material-icons">arrow_back</i>
   </button>
+  <button (click)="submitRecipe()">Submit</button>
 </div>
