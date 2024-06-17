@@ -27,6 +27,6 @@ export interface Recipe {
   likes: number;
   type: FoodType;
   serve: number;
-  userId: string;
+  userId: string | undefined;
   cost: number;
 }

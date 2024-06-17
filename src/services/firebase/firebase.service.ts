@@ -160,6 +160,29 @@ export class FirebaseService {
     return { app: this.app, db: this.db };
   }
 
+  async getUserDataFromDatabase(userId: string): Promise<any> {
+    try {
+      const docSnap = await getDoc(doc(this.db, 'Users', userId));
+      if (docSnap.exists()) {
+        return docSnap.data();
+      } else {
+        console.log('No such document!');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error getting document:', error);
+      throw error;
+    }
+  }
+
+  async saveUserDataToDatabase(userId: string, userData: any): Promise<void> {
+    try {
+      await setDoc(doc(this.db, 'Users', userId), userData);
+    } catch (error) {
+      console.error('Error writing document: ', error);
+      throw error;
+    }
+  }
   constructor() {
     this.getAllRecipes(); // Fetch data as soon as the service is instantiated
   }
