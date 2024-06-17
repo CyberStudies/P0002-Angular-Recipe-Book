@@ -45,6 +45,10 @@ export class NavBarComponent implements AfterViewInit {
       }
     });
   }
+  isUserAccountRoute() {
+    return this.router.url === '/user/account';
+  }
+
   ngAfterViewInit(): void {}
   selectedIndex = -1;
   @HostListener('keydown', ['$event'])

@@ -1,8 +1,9 @@
 <nav class="navbar default-border-top-bottom">
   <div class="elements">
-    <button class="menu-button">
+    <button *ngIf="!isUserAccountRoute()" class="menu-button">
       <i class="material-icons" [routerLink]="['/user/auth']">person</i>
     </button>
+
     <div class="spacer"></div>
     <ng-container *ngFor="let link of links">
       <a [routerLink]="link.path" routerLinkActive="a-is-selected"
