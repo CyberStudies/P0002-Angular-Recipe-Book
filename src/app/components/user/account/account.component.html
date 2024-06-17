@@ -14,19 +14,36 @@
   <div class="recipes-container">
     <div class="user-recipes">
       <h2>Your Recipes</h2>
-      <ul>
-        <li *ngFor="let recipe of userRecipes" class="recipe-item">
-          {{ recipe }}
-        </li>
-      </ul>
-    </div>
-    <div class="favourite-recipes">
-      <h2>Your Favourite Recipes</h2>
-      <ul>
-        <li *ngFor="let recipe of favouriteRecipes" class="recipe-item">
-          {{ recipe }}
-        </li>
-      </ul>
+      <div class="recipe-list-container">
+        <div class="recipe-list">
+          <div class="recipe-list-header">
+            <div class="recipe-list-header-title">[Recipe Name]</div>
+          </div>
+          <div
+            *ngFor="let recipe of currentRecipes"
+            (click)="gotoRecipe(recipe.id)"
+            class="recipe-list-item {{ mapFoodTypeName(recipe.type) }}"
+          >
+            <div>{{ recipe.name }}</div>
+          </div>
+          <div class="recipe-list-footer">
+            <div>
+              <button
+                class="recipe-list-footer-button"
+                (click)="previousPage()"
+              >
+                <i class="material-icons">arrow_back</i>
+              </button>
+              <span class="recipe-list-footer-text"
+                >page {{ currentPage }} of {{ allPages }}</span
+              >
+              <button class="recipe-list-footer-button" (click)="nextPage()">
+                <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <button (click)="onSignOut()" class="sign-out-btn">Sign Out</button>

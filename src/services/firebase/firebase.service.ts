@@ -37,7 +37,7 @@ export class FirebaseService {
   private app = initializeApp(this.firebaseConfig);
   private db = getFirestore(this.app);
 
-  async getRecipe(recipeId: string) {
+  async getRecipe(recipeId: string): Promise<Recipe | undefined> {
     try {
       console.log('Fetching recipe with ID:', recipeId);
       const recipeRef = doc(this.db, 'Recipes', recipeId);
@@ -58,7 +58,7 @@ export class FirebaseService {
     }
   }
 
-  async getSections(recipeId: string) {
+  async getSections(recipeId: string): Promise<Section[]> {
     try {
       console.log('Fetching sections for recipe with ID:', recipeId);
       const sectionsRef = collection(this.db, `Recipes/${recipeId}/Sections`);
@@ -92,7 +92,7 @@ export class FirebaseService {
   private recipesSubject = new BehaviorSubject<Recipe[]>([]);
   recipes$ = this.recipesSubject.asObservable();
 
-  async getAllRecipes() {
+  async getAllRecipes(): Promise<Recipe[]> {
     try {
       const recipesRef = collection(this.db, 'Recipes');
       const recipesSnapshot = await getDocs(recipesRef);
@@ -105,11 +105,14 @@ export class FirebaseService {
         })
       );
       this.recipesSubject.next(recipes); // Update the BehaviorSubject with new data
+      return recipes; // Return the recipes array
     } catch (error) {
       console.error('Error fetching all recipes:', error);
       this.recipesSubject.next([]); // Emit an empty array on error
+      return []; // Return an empty array on error
     }
   }
+
   async addRecipe(recipe: Recipe): Promise<string> {
     try {
       const recipesRef = collection(this.db, 'Recipes');
@@ -182,8 +185,5 @@ export class FirebaseService {
       console.error('Error writing document: ', error);
       throw error;
     }
-  }
-  constructor() {
-    this.getAllRecipes(); // Fetch data as soon as the service is instantiated
   }
 }
