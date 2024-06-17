@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 @Component({
   selector: 'app-recover',
@@ -9,14 +11,15 @@ import { Router } from '@angular/router';
 export class RecoverComponent {
   user: any = {};
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  onRecover() {
-    // Implement your recovery logic here
-    // For example, you can send a password reset email to the provided email address
-    console.log('Recovery initiated for email:', this.user.email);
-    // After initiating recovery, you can redirect the user to another page
-    // For example, back to the login page
-    this.router.navigate(['/login']);
+  async onRecover() {
+    try {
+      await sendPasswordResetEmail(this.authService.getAuth(), this.user.email);
+      console.log('Recovery email sent');
+      this.router.navigate(['./']);
+    } catch (error) {
+      console.log('Error sending recovery email', error);
+    }
   }
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,8 +15,24 @@ export class SignUpComponent {
     confirmPassword: '',
   };
 
-  onSignUp() {
-    // Add sign-up logic here
-    console.log('User signed up', this.user);
+  constructor(private authService: AuthService, private router: Router) {}
+
+  async onSignUp() {
+    if (this.user.password !== this.user.confirmPassword) {
+      console.log('Error: Passwords do not match');
+      return;
+    }
+
+    try {
+      const user = await this.authService.signUp(
+        this.user.email,
+        this.user.password,
+        this.user.username
+      );
+      // Navigate to dashboard
+      this.router.navigate(['./']);
+    } catch (error) {
+      console.log('Error signing up', error);
+    }
   }
 }

@@ -12,7 +12,7 @@ import {
   query,
   where,
   addDoc,
-} from 'firebase/firestore/lite';
+} from 'firebase/firestore';
 import { Recipe, Section } from '@/models/recipe.model';
 import {
   getStorage,
@@ -155,6 +155,9 @@ export class FirebaseService {
         }
       );
     });
+  }
+  getFirebaseApp() {
+    return { app: this.app, db: this.db };
   }
 
   constructor() {

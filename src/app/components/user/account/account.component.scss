@@ -1,0 +1,70 @@
+$white: white;
+$black: rgba(0, 0, 0, 0.411);
+$accent: green;
+$light-grey: light-grey;
+
+.account-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: $white;
+  background-color: $black;
+  font-family: 'Fira Code', monospace;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .user-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+
+    .username {
+      color: $accent;
+    }
+  }
+
+  .recipes-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .user-recipes,
+    .favourite-recipes {
+      width: 45%;
+
+      h2 {
+        color: $accent;
+        margin-bottom: 1rem;
+      }
+
+      .recipe-item {
+        background-color: $light-grey;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .sign-out-btn {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: $accent;
+    color: $black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: lighten($accent, 10%);
+    }
+  }
+}

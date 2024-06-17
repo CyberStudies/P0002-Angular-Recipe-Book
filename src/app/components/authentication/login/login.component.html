@@ -3,7 +3,7 @@
   <h1>Welcome Back!</h1>
   <form (ngSubmit)="onLogin()">
     <div class="form-group">
-      <label for="username">Username</label>
+      <label for="username">Email</label>
       <input
         type="text"
         id="username"
@@ -22,8 +22,9 @@
         required
       />
     </div>
-    <button type="submit" class="btn-login" [routerLink]="['../account']">
-      Login
+    <button type="submit" class="btn-login">Login</button>
+    <button type="button" class="btn-login" (click)="onLoginWithGoogle()">
+      Login with Google
     </button>
     <div class="signup-link">
       Don't have an account?

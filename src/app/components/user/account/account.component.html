@@ -1,1 +1,33 @@
-<p>account works!</p>
+<div class="account-page">
+  <div class="user-info">
+    <img
+      *ngIf="userPhoto"
+      [src]="userPhoto"
+      alt="User photo"
+      class="user-photo"
+    />
+    <h1>
+      Welcome, <span class="username">{{ userName }}</span
+      >!
+    </h1>
+  </div>
+  <div class="recipes-container">
+    <div class="user-recipes">
+      <h2>Your Recipes</h2>
+      <ul>
+        <li *ngFor="let recipe of userRecipes" class="recipe-item">
+          {{ recipe }}
+        </li>
+      </ul>
+    </div>
+    <div class="favourite-recipes">
+      <h2>Your Favourite Recipes</h2>
+      <ul>
+        <li *ngFor="let recipe of favouriteRecipes" class="recipe-item">
+          {{ recipe }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button (click)="onSignOut()" class="sign-out-btn">Sign Out</button>
+</div>
