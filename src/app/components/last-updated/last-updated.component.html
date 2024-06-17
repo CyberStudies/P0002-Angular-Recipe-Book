@@ -30,5 +30,5 @@
       <img [src]="recipe.image" (click)="goto(recipe.id)" />
     </div>
   </div>
-  <div class="last-updated-card-date">{{ date }}</div>
+  <div class="last-updated-card-date">{{ date | date : "fullDate" }}</div>
 </div>

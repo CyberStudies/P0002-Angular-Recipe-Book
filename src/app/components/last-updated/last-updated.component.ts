@@ -13,7 +13,7 @@ import { Timestamp } from 'firebase/firestore';
 })
 export class LastUpdatedComponent implements OnInit {
   @Input() recipe: Recipe;
-  date: string = 'no data found';
+  date: number = 0;
   currentPage = 1;
   pageSize = 4;
   totalPages: number = 1;
@@ -39,7 +39,7 @@ export class LastUpdatedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.date = this.dateService.getFormattedDate(this.recipe.date);
+    this.date = this.recipe.date;
 
     // Populate the ingredients array
     this.recipe.sections.forEach((section) => {
