@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'favourites', component: FavouritesComponent },
   { path: 'add', component: AddComponent, canActivate: [authGuard] }, // Protect the "Add" page with authGuard
   { path: 'recipe/:id', component: SelectedRecipeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // redirect to `home` route by default
+  { path: '', redirectTo: '/explore', pathMatch: 'full' }, // redirect to `home` route by default
 
   {
     path: 'user',

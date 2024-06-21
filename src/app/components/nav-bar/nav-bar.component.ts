@@ -23,7 +23,7 @@ export class NavBarComponent implements AfterViewInit {
   links = [
     { path: '/home', label: 'Home' },
     { path: '/explore', label: 'Recipes' },
-    { path: '/favourites', label: 'Favourites' },
+    // { path: '/favourites', label: 'Favourites' },
     { path: '/add', label: 'Add' },
   ];
 
